@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# Create the 'text' directory if it doesn't exist
+mkdir -p text
+
+# Loop through all PDF files in the current directory
+for pdf_file in *.pdf; do
+  # Extract the base name (without extension)
+  base_name=$(basename "$pdf_file" .pdf)
+
+  # Define the output text file path
+  text_file="text/${base_name}.txt"
+
+  # Extract text from the PDF and save it to the output file
+  pdftotext "$pdf_file" "$text_file"
+
+  echo "Extracted text from $pdf_file to $text_file"
+done

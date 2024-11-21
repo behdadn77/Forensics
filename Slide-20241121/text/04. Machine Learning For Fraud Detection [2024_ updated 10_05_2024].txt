@@ -1,0 +1,2538 @@
+04. Machine Learning For
+Fraud Detection
+Cybercrime and Digital Forensics
+Prof. Carminati
+
+A Small Notice
+Different types of analytics techniques have been
+developed in the literature originating from a variety of
+different disciplines such as statistics, machine learning,
+artificial intelligence, pattern recognition, and data mining.
+We will discuss a selection of techniques with a particular
+focus on the fraud practitioner’s perspective.
+
+2
+
+Data Preprocessing Step
+
+Real Data
+In theory, for data ... “The bigger the better”
+
+4
+
+Real Data
+In theory, for data ... “The bigger the better” but ... real data
+is (typically) “dirty”:
+●
+
+inconsistencies,
+
+●
+
+incompleteness,
+
+●
+
+duplication...
+
+“Messy data will yield messy analytical models”
+
+5
+
+Real Data
+In theory, for data ... “The bigger the better” but ... real data
+is (typically) “dirty”:
+●
+
+inconsistencies,
+
+●
+
+incompleteness,
+
+●
+
+duplication...
+
+“Messy data will yield messy analytical models”
+Data-filtering mechanisms must be applied to clean up
+and reduce the data.
+Even the slightest mistake can make the data totally
+unusable and results invalid.
+
+6
+
+Types of Data Sources
+Variety of different sources that provide different types
+of information:
+●
+●
+●
+●
+●
+●
+●
+●
+
+Transactional data
+Contractual, subscription, or account data
+Sociodemographic information
+Surveys
+Behavioral information
+Unstructured data
+Contextual or network information
+Qualitative, expert-based data
+
+● Publicly available data, ...
+7
+
+Transactional data
+Structured and detailed information capturing the key
+characteristics of a customer transaction.
+Summarized over longer time horizons by aggregating it
+● averages,
+● (absolute or relative) trends,
+● maximum or minimum values,
+● Recency (R), Frequency (F), and Monetary (M)
+Meaningful when interpreted individually
++
+Their interaction is very useful for fraud detection,
+anti-money laundering.
+
+8
+
+Merging Data Sources
+The application of both descriptive and predictive analytics
+requires data represented in a structured manner.
+A structured data table allows straightforward processing
+and analysis.
+● The rows represent the basic entities to which the
+analysis applies (e.g., customers, transactions,
+enterprises, claims, cases). Also referred to instances,
+observations, or lines.
+● The columns contain information about the basic
+entities. Also referred to (explanatory) variables, fields,
+characteristics, attributes, indicators, features.
+9
+
+Merging Data Sources
+To construct the aggregated, non-normalized data table,
+several normalized source data tables have to be merged.
+Merging tables:
+● selecting information from different tables related to an
+individual entity
+● copying it to the aggregated data table.
+The individual entity can be recognized and selected in the
+different tables by making use of keys that are attributes
+that allow identifying and relating observations from
+different source tables pertaining to the same entity.
+
+10
+
+Aggregating Normalized Data Tables
+into a Non-Normalized Data Table
+
+It is crucial to control the resulting table and to make sure
+that all information is correctly integrated.
+
+11
+
+Types of Data Elements
+● Continuous data: Data elements defined on an
+interval, which can be both limited and unlimited.
+● Categorical data
+○ Nominal: data elements that can only take on a limited
+set of values with no meaningful ordering in between.
+○ Ordinal: data elements that can only take on a limited set
+of values with a meaningful ordering in between.
+○ Binary: data elements that can only take two values
+(yes/no).
+
+12
+
+Sampling
+Take a subset of historical data to build an analytical model.
+With the availability of high-performance computing
+why not analyze directly the full data set?
+
+13
+
+Sampling
+Take a subset of historical data to build an analytical model
+With the availability of high-performance computing
+why not analyze directly the full data set?
+Key requirements for a good sample
+● representative for the future entities
+● Choosing the optimal time window
+Timing and representativeness are crucial!
+14
+
+Sampling Timing and Bias
+Trade-off between
+● lots of data (a more robust analytical model)
+● recent data (more representative)
+
+An “average” period to get as accurate as possible a
+picture of the target population.
+Sampling bias should be avoided even if it is not
+straightforward
+
+15
+
+Sampling Bias: Credit card context
+Example
+A month’s data as input. But which month is
+representative?
+
+16
+
+Sampling Bias: Credit card context
+Example
+A month’s data as input. But which month is
+representative?
+Customers may use their credit card differently during the
+month of December when buying gifts for the holiday
+period.
+Two sources of bias from normal business periods.
+1. Credit card customers may spend more during this
+period, both in total as well as on individual products.
+2. Different types of products may be bought in different
+stores usually frequented by the customer.
+17
+
+Mitigations to address seasonality
+effect or bias
+Every month may deviate from normal (i.e., average)
+
+18
+
+Mitigations to address seasonality
+effect or bias
+Every month may deviate from normal (i.e., average)
+1. Build separate models for different months, or for
+homogeneous time frames
+
+19
+
+Mitigations to address seasonality
+effect or bias
+Every month may deviate from normal (i.e., average)
+1. Build separate models for different months, or for
+homogeneous time frames -> This is a complex and
+demanding solution: multiple models have to be
+developed, run, maintained, and monitored.
+
+20
+
+Mitigations to address seasonality
+effect or bias
+Every month may deviate from normal (i.e., average)
+1. Build separate models for different months, or for
+homogeneous time frames -> This is a complex and
+demanding solution: multiple models have to be
+developed, run, maintained, and monitored.
+2. Sampling observations over a period covering a full
+business cycle and build a single model:
+a. Reduced fraud detection power since less tailored to a
+particular time frame,
+b. less complex and costly to operate.
+
+Sampling has a direct impact on the fraud detection power.
+21
+
+Stratified Sampling
+A sample is taken according to predefined strata.
+In a fraud detection context data sets are very skew.
+Stratifying according to the target fraud indicator
+● sample will contain exactly the same percentages of
+(non-) fraudulent transactions as in the original data.
+Stratification applied on predictor variables
+● Resemble the real product transaction distribution.
+22
+
+Visual Data Exploration
+Initial insights into the data
+Different plots/graphs:
+●
+
+Pie chart
+
+●
+
+Bar charts
+
+●
+
+Histogram
+
+●
+
+Scatter plots
+
+23
+
+Datasets Overview
+Two anonymized datasets provided by an Italian financial
+institute
+1. Unlabeled Dataset: December 2012 - September 2013
+Service
+
+Transactions
+
+Users
+
+Bank Transfer
+
+584,198
+
+53,823
+
+Phone Recharges
+
+83,968
+
+18,805
+
+Prepaid Debit Card
+
+56,562
+
+10,344
+
+2. Labelled Dataset: October 2014 - February 2015
+Service
+
+Transactions
+
+Frauds
+
+Bank Transfer
+
+482,930
+
+609
+
+Phone Recharges
+
+48,442
+
+3
+
+Prepaid Debit Card
+
+45,573
+
+48
+24
+
+Visual Data Exploration:
+Transaction and Amount Distribution
+Overall transactions distribution
+
+Transactions distribution in the day
+
+25
+
+Visual Data Exploration:
+Skewed and unbalanced distribution
+Amount distribution
+
+Number of transaction per user
+distribution
+
+26
+
+Visual Data Exploration:
+Skewed and unbalanced distribution
+Amount distribution
+High cardinality
+
+Number of transaction per user
+distribution
+Majority of users perform only few
+transactions
+
+27
+
+Visual Data Exploration:
+Transactions and Frauds Distribution
+Transactions
+
+Frauds
+
+28
+
+Labelled Dataset Analysis:
+Amount Distribution
+Transactions amount distribution
+
+Fraudulent amount distribution
+
+29
+
+Exploratory Statistical Analysis
+
+Inspect some basic statistical measurements to see
+whether there are any interesting patterns present (e.g.,
+fraudsters versus non fraudsters)
+
+● Basic Descriptive Techniques
+● Specific Descriptive Techniques
+30
+
+Basic Descriptive Statistics
+Descriptive statistics provide basic insight for the data.
+● The mean and median (continuous variables)
+○ the median value less sensitive to extreme values but not
+provide as much information with respect to the full distribution
+● The mode (categorical variables): most frequently
+
+occurring value.
+● The variation or the standard deviation: how much the
+data is spread around the mean value.
+● Percentile values: complementary information w.r.t. the
+distribution and the median value.
+31
+
+Specific Descriptive Statistics
+Express the symmetry or asymmetry of a distribution
+(e.g., skewness, peakedness or flatness of a distribution).
+The values of these measures are harder to interpret
+● Limits their practical use
+● Sometime it is easier to assess these aspects by
+inspecting visual plots of the distributions of the involved
+variables
+Benford’s Laws
+32
+
+Missing Values
+Missing values can occur because of various reasons.
+● The information can be non applicable.
+● The information can also be undisclosed.
+● Error during merging sources
+
+Some analytical techniques (e.g., decision trees) can deal
+directly with missing values.
+Other techniques need some additional preprocessing.
+33
+
+Dealing with Missing Values - 1
+● Replace: replacing the missing value with a known
+value.
+● Delete deleting observations or variables with lots of
+missing values. This assumes that information is
+missing at random and has no meaningful interpretation
+and/or relationship to the target.
+● Keep Missing values can be meaningful and may have
+a relation with fraud and needs to be considered as a
+separate category.
+34
+
+Dealing with Missing Values - 2
+Statistically test whether missing information is related
+to the target variable or not.
+● If yes, then we can adopt the keep strategy and make a
+special category for it.
+● If not, one can depending on the number of
+observations available, decide to either delete or
+replace.
+
+35
+
+Dealing with missing values
+Example
+
+36
+
+Outliers
+Outliers: extreme observations that are very dissimilar to
+the rest of the population.
+● Valid observations, e.g., salary of boss is
+US$1,000,000
+● Invalid observations, e.g., age is 300 years
+Univariate outliers: outlying on one dimension.
+Multivariate outliers: outlying in multiple dimensions.
+37
+
+Univariate Outlier Detection and
+Treatment
+Minimum and maximum values for each of the data
+elements.
+Graphical tools
+
+38
+
+Univariate Outlier Detection and
+Treatment
+Minimum and maximum values for each of the data
+elements.
+Graphical tools
+● Histograms
+Univariate Variable
+
+39
+
+Histogram example
+
+40
+
+Univariate Outlier Detection and
+Treatment
+Minimum and maximum values for each of the data
+elements.
+Graphical tools
+● Histograms
+Univariate Variable
+● Box Plot
+
+41
+
+Box Plot example
+A box plot represents three key quartiles of the data:
+● the first quartile (25 percent of the observations have a
+lower value),
+● the median (50 percent of the observations have a
+lower value),
+● and the third quartile (75 percent of the observations
+have a lower value).
+
+42
+
+Univariate Outlier Detection and
+Treatment
+Minimum and maximum values for each of the data
+elements.
+Graphical tools
+● Histograms
+Univariate Variable
+● Box Plot
+● Z-scores
+
+43
+
+Z-scores
+Measures how many standard deviations an observation
+lies away from the mean
+
+Z-score relies on
+the normal distribution
+44
+
+Multivariate Outlier Detection and
+Treatment
+Minimum and maximum values for each of the data elements.
+● Graphical tools
+○ Histograms
+Univariate Variable
+○ Box Plot
+● Z-scores
+● Fitting regression lines and inspecting the observations
+with large errors (using, e.g., a residual plot).
+● Clustering or calculating the Mahalanobis distance.
+
+Multivariate
+Variable
+
+45
+
+Outlier Detection and Treatment
+Various schemes exist to deal with outliers
+● For invalid observations, one could treat the outlier as
+a missing value.
+● For valid observations: Impose both a lower and
+upper limit on a variable and any values below/above
+are brought back to these limits
+
+46
+
+Truncation Example
+Impose both a lower and upper limit on a variable and any
+values below/above are brought back to these limits.
+● Z-scores
+
+● Sigmoid transformation ranging between 0 and 1
+
+47
+
+Expert-based Outlier Detection
+Not all invalid values are outlying and may go unnoticed if
+not explicitly looked into.
+Construct a set of rules formulated based on expert
+knowledge, which is applied to the data to check and alert
+for issues.
+● Relations that exist between the different variables,
+● Constraints that apply to the combination of variable
+values.
+
+48
+
+Example
+Customers
+● birth date = “01/01/1980”
+● category = child
+Which value is invalid ? cannot be determined...
+Both values are not outlying and therefore such a conflict
+will not be noted by the analyst unless some explicit
+precautions are taken.
+49
+
+Discussion on preprocessing
+● When handling valid outliers in the data set using the
+treatment techniques, we may impair the ability of
+unsupervised learning techniques analytics in detecting
+frauds:
+○ Be extremely careful in treating valid outliers when
+applying unsupervised learning techniques to build a
+fraud detection model.
+
+● When handling invalid outliers, on the contrary, they can
+be treated as missing values preferably by including an
+indicator that the value was missing or even more
+precisely an invalid outlier.
+50
+
+Euclidean vs Manhattan
+
+51
+
+Euclidean vs Manhattan
+on
+i
+t
+za
+i
+d
+ar em
+d
+n
+l
+a
+b
+t
+o
+S
+pr
+
+52
+
+Standardizing Data
+Scaling variables to a similar range.
+Example
+●
+
+Eligible (coded as 0/1)
+
+●
+
+income (ranging between 0 and US$1,000,000).
+--------
+
+● Min/Max standardization
+○ Whereby newmax and newmin are the newly imposed
+maximum and minimum (e.g., 1 and 0)
+
+● z-score standardization
+○ Calculate the z-scores
+
+● Decimal scaling
+53
+
+Categorization
+For categorical variables, it is needed to reduce the
+number of categories. (E.g., IBAN, IP)
+Basic methods:
+● Equal interval binning
+○ bins with the same range
+
+● Equal frequency binning.
+○ bins with the same number of observations
+
+● Chi-squared analysis
+● Pivot Table
+For continuous variables, by categorizing the variable into
+ranges, nonmonotonicity can be taken into account.
+
+54
+
+Continuous variables categorization
+example
+● Non monotonous relation between risk of fraud and age.
+● Nonlinear model can model the nonlinearity.
+● Regression model, it can only fit a line, it will miss the
+nonmonotonicity.
+
+55
+
+Variable Selection
+Many analytical modeling exercises start with tons of
+variables, of which typically only a few actually
+contribute to the prediction of the target variable.
+The average model in fraud detection has between 10 and
+15 variables.
+How do we find these variables?
+
+56
+
+Filters
+Are a very handy variable selection mechanism.
+Allow a quick screening of which variables should be
+retained for further analysis.
+Measure univariate correlations between each variable and
+the target.
+
+57
+
+Filtering discussion
+Filters allow reduction in the number of dimensions of the
+data set early in the analysis.
+Drawbacks:
+- Work univariately and do not consider correlation
+between the dimensions individually.
+
+Other criteria may play a role in selecting variables.
+○ Privacy issues and regulatory compliance
+○ Also operational issues could be considered.
+58
+
+Principal Components Analysis
+(PCA)
+Technique to reduce the dimensionality of data by
+forming new variables that are not correlated and linear
+combination of the original variables.
+These new variables describe the main components or
+dimensions that are present in the original data set.
+Max number of new variables (i.e., principal components) =
+number of original variables.
+
+59
+
+Principal Components Analysis
+(PCA)
+To explain all the information (variance) in the original data
+set, the full set of principal components is needed
+The variance contained in the original variables can be
+summarized by a limited number of principal components.
+Some of these account for a very small fraction of variance
+of the original variables. Therefore, they can be left out.
+Reduced dimensionality in the data set
+60
+
+Principal Components Analysis
+(PCA)
+
+61
+
+PCA limitations
+Replacing the original variables with a (reduced) set of
+uncorrelated principal components comes at a price:
+● reduced interpretability
+They are a weighted linear combination of the original
+variables.
+When interpretability is no concern, then PCA is a powerful
+data reduction tool that will yield a better model in terms of
+stability as well as predictive performance.
+62
+
+Unsupervised Learning for
+Fraud Detection
+
+63
+
+Unsupervised Learning
+Aims at finding anomalous behavior deviating from the
+norm
+● Behavior of the average customer at a snapshot in
+time
+● The average behavior of a given customer across a
+time period.
+Can identify emerging unknown cyber threats.
+
+Unsupervised learning = Anomaly
+Detection
+It aims at finding anomalies: suspicious observations,
+outliers or exceptions.
+“An outlying observation, or outlier, is one that appears to
+deviate markedly from other members of the sample in
+which it occurs.” Grubbs (1969)
+Relevant in environments where:
+● Organizations are starting doing fraud detection
+● There is no labeled historical data set available.
+● Fraudsters are continuously adapting their strategies.
+65
+
+Unsupervised Learning Challenge
+Define the average behavior or norm
+● Depend on the application field
+● Boundary between norm and outliers is not clear-cut.
+○ Fraudsters try to blend into norm
+
+● The norm may change over time
+○ Analytical models built need to be continuously monitored
+and updated
+
+Anomalies do not necessarily represent frauds
+Unsupervised learning for fraud detection require extensive
+validation of the identified suspicious observations
+
+66
+
+Graphical outlier detection
+procedures
+Ideal tools to explore the data and get preliminary insights.
+● One-dimensional outliers (histogram or box plot).
+● Two-(three) dimensional outliers (scatter plot).
+
+Disadvantages
+● Less formal and only limited to a few dimensions
+● Require active involvement of the end-user
+● For a large dimensional data set, is cumbersome.
+67
+
+Statistical Outlier Detection
+● Z-Score
+○ Recall: If the absolute value of the z-score is bigger than
+3 can be considered as outliers
+
+● Fit a distribution, or mixture of distributions
+○ Outliers: observations with small values for the probability
+density function.
+
+● Break Point Analysis
+● Peer Group Analysis
+
+68
+
+Break-Point Analysis
+Intra-account fraud detection method.
+Break point indicates a sudden change in account
+behavior.
+1. Define a fixed time window
+2. Split it into an “old” and “new” part.
+3. Compare the new part with the old part
+a. Old part = local profile against which new observations
+are compared
+69
+
+1 - Define a fixed time window
+1
+
+1
+
+70
+
+2 - Split it into“old” and “new” part
+2
+
+71
+
+3 - Compare the new part with the
+old part
+3
+
+t-score
+
+72
+
+Peer-Group Analysis
+Inter-account fraud detection method
+
+Peer group is a group of accounts that behave similarly to
+the target account.
+
+When the behavior of the target account deviates
+substantially from its peers, an anomaly can be signaled.
+
+73
+
+Peer-Group Analysis Steps
+1. The peer group of a particular account is identified
+a. Prior business knowledge
+b. Statistical way
+i. Statistical similarity metrics (Euclidean-based metrics)
+
+c. Number of peers
+i. Too small (too local) -> sensitive to noise,
+ii. Too large (too global) ->insensitive to local important
+irregularities
+
+2. Target account behavior is contrasted with its peers
+a. Statistical test (e.g., Student’s t-test)
+b. Distance metric (e.g., Mahalanobis Distance)
+
+74
+
+Credit Card Fraud Example
+Weekly amount time series:
+Verify whether the amount spent at time n is anomalous
+
+75
+
+Credit Card Fraud Example
+Weekly amount time series:
+Verify whether the amount spent at time n is anomalous
+Step 1: Identifying the k peers of the target account.
+
+76
+
+Credit Card Fraud Example
+Weekly amount time series:
+Verify whether the amount spent at time n is anomalous
+Step 1: identifying the k peers of the target account.
+Step 2: Behavior comparison
+
+t-score
+
+77
+
+Peer-group vs Break-point Analysis
+Peer-group analysis tracks anomalies by considering
+inter-account behavior
+Break-point analysis tracks anomalies by considering
+intra-account behavior
+
+What are the advantages and disadvantages?
+Hint: Spending pattern seasonality
+Both break-point and peer-group analysis will detect local
+anomalies rather than global anomalies
+
+78
+
+Clustering
+Split up a set of observations into segments (i.e., clusters)
+that maximize
+● The homogeneity within a cluster
+○ (cohesive)
+● The heterogeneity between clusters
+○ (separated).
+
+Carefully select the data for clustering
+● Structured information
+● Unstructured information
+
+“The more data the better“
+● Avoid excessive amounts of correlated data by applying
+feature selection methods.
+
+79
+
+Clustering for Fraud Detection
+“Group anomalies into small, sparse clusters, based on
+similarity”
+
+80
+
+Distance Metric
+Aim of clustering: group observations based on similarity
+A distance metric is needed to quantify similarity.
+Various distance metrics have been introduced for both
+continuous and categorical data.
+● Euclidean, Mahalanobis, Minkowski
+
+81
+
+Distance Metrics:
+Continuous vs Categorical
+Continuous Variables
+● Euclidean metric
+● Pearson correlation or cosine measure
+Categorical variables
+● Binary variables
+○ Simple Matching Coefficient (SMC) = calculates the
+number of identical matches between the variable values
+(equally important).
+○ Jaccard index = measures the similarity between both
+claims across those red flags that were raised at least
+once.
+82
+
+Types of clustering techniques
+
+83
+
+Clustering techniques
+
+84
+
+Hierarchical Clustering
+
+85
+
+Distances between Clusters
+
+86
+
+Number of Clusters
+To decide on the optimal number of clusters
+● Dendrogram
+○ tree-like diagram that records the sequences of merges.
+○ vertical (or horizontal) scale gives the distance between
+two clusters amalgamated.
+○ cut the dendrogram at the desired level to find the optimal
+clustering
+
+● Screen plot
+○ plot of the distance at which clusters are merged
+○ The elbow point then indicates the optimal clustering.
+
+87
+
+Dendrogram
+
+Screen Plot
+
+88
+
+Example of Hierarchical Clustering
+Procedures: Scatter Plot
+
+89
+
+Example of Hierarchical Clustering
+Procedures: Single Linkage
+
+90
+
+Example of Hierarchical Clustering
+Procedures: Complete linkage
+
+91
+
+Example of Hierarchical Clustering
+Procedures: Average linkage
+
+92
+
+Example of Hierarchical Clustering
+Procedures: Centroid Method
+
+93
+
+Example of Hierarchical Clustering
+Procedures: Ward’s method
+
+94
+
+Hierarchical Clustering conclusions
+Advantage
+
+Disadvantage
+
+● The number of
+clusters does not
+need to be specified
+prior to the analysis
+
+● Do not scale very
+well to large data sets
+● The interpretation of
+the clusters is often
+subjective and
+depends on the
+business expert
+and/or data scientist.
+
+Clustering techniques
+
+96
+
+Clustering techniques
+
+97
+
+k-Means Clustering
+
+1. Select k observations as initial cluster centroids (seeds).
+2. Assign each observation to the cluster that has the
+closest centroid (e.g., Euclidean distance).
+3. When all observations have been assigned, recalculate
+the positions of the k centroids (mean).
+4. Repeat until the cluster centroids no longer change or a
+fixed number of iterations is reached
+
+98
+
+k-Means Clustering: Original Data
+
+99
+
+k-Means Clustering Iteration Step 1:
+Randomly Select Initial Centroid
+
+100
+
+k-Means Clustering Iteration Step 1:
+Assign Remaining Observations
+
+101
+
+k-Means Clustering Iteration Step 2:
+Recompute Centroids
+
+102
+
+k-Means Clustering Iteration Step 2:
+Reassign Observations
+
+103
+
+k-Means Clustering Limitations
+The number of clusters k needs to be specified before the start
+of the analysis.
+● expert based input
+● result of another (e.g., hierarchical) clustering procedure
+● multiple values of k are tried out and the resulting clusters
+evaluated.
+● try out different seeds to verify the stability of the clustering
+solution.
+k-means is sensitive to outliers, which are especially relevant in a fraud
+detection setting.
+A more robust alternative is to use the median instead (k-medoid
+clustering).
+In case of categorical variables, the mode can be used (k-mode
+clustering).
+
+104
+
+Evaluating and Interpreting
+Clustering Solutions
+
+105
+
+Evaluating and Interpreting
+Clustering Solutions
+Evaluating a clustering solution
+● No trivial exercise
+● There exists no universal criterion
+Statistical Perspective
+The Sum of Squared Errors (SSE)
+where K represents the number of clusters and m_i the
+centroid (e.g., mean) of cluster i.
+When comparing two clustering solutions, the one with the
+lowest SSE can then be chosen.
+
+106
+
+Evaluating and Interpreting
+Clustering Solutions
+Explore data and graphically
+compare cluster distributions
+with population distributions
+across all variables on a
+cluster-by-cluster basis
+
+107
+
+Clustering techniques
+
+108
+
+Self-Organizing Maps
+Unsupervised learning algorithm that allows users to
+visualize and cluster high-dimensional data on a
+low-dimensional grid of neurons
+
+Feedforward neural network with two layers: an input and
+an output layer.
+
+109
+
+Self-Organizing Maps: Output Layer
+
+110
+
+Self-Organizing Maps: Functioning
+Each input is connected to all neurons in the output layer
+with weights w = [w1 , ... , wN ], N=number of variables.
+All weights are randomly initialized.
+
+111
+
+Self-Organizing Maps: Functioning
+When a training vector x is presented, the weight vector of
+each neuron c is compared with x:
+
+The neuron that is most similar to x in Euclidean sense is
+called the Best Matching Unit (BMU).
+
+112
+
+Self-Organizing Maps: Functioning
+The weight vector of the BMU and its neighbors in the
+grid are then adapted using the following learning rule
+
+where
+● t represents the time index during training
+● h_ci (t) defines the neighborhood of the BMU c
+
+113
+
+Self-Organizing Maps: Functioning
+The neighborhood function h_ci (t): nonincreasing
+function of the time and the distance from the BMU.
+The decreasing learning rate and radius will give a stable
+map after a certain amount of training:
+- The neurons will then move more and more toward the input
+observations and interesting segments will emerge.
+
+Training is stopped when:
+● the BMUs remain stable
+● after a fixed number of iterations (e.g., 500 times the
+number of SOM neurons).
+
+114
+
+115
+
+Self-Organizing Maps: U-matrix
+SOMs can be visualized by means of a U-matrix or
+component plane:
+● A U (unified distance)-matrix superimposes a height Z
+dimension on top of each neuron visualizing the
+average distance between the neuron and its neighbors
+○ dark/light colors indicate a large distance and can be
+interpreted as cluster boundaries.
+
+● A component plane visualizes the weights between
+each specific input variable and its output neurons. It
+provides a visual overview of the relative contribution of
+each input attribute to the output neurons.
+
+116
+
+U (unified distance)-matrix (a)
+
+117
+
+Self-Organizing Maps: Clustering
+countries based on CPI
+
+118
+
+Clustering countries based on CPI:
+component plane for literacy
+
+119
+
+Clustering countries based on CPI:
+component plane for Policy Rights
+
+120
+
+World Poverty Map
+
+121
+
+122
+
+SOM conclusions
+SOMs are a very handy tool for clustering high-dimensional
+data sets because of the visualization facilities.
+Since there is no objective function to minimize, it is harder
+to compare various SOM solutions against each other.
+Experimental evaluation and expert interpretation is needed
+to decide on the optimal size of the SOM.
+Unlike k-means clustering, a SOM does not force the
+number of clusters to be equal to the number of output
+neurons.
+
+123
+
+Other Techniques: One-Class SVM
+Maximize the distance between a hyperplane and the origin
+Separate the majority of the observations from the origin.
+Outliers: observations that lie below the hyperplane,
+closest to the origin
+Normal observations lie above the hyperplane
+Outliers will return a positive (negative) value for:
+
+124
+
+Supervised Learning for
+Fraud Detection
+
+125
+
+Supervised Learning
+Assumes the availability of historical labelled data
+Can identify known fraudulent patterns
+The aim is to build an analytical model predicting a target
+measure of interest
+The aim is to build an analytical model predicting
+a target measure of interest
+The target is used to steer the learning process
+- Label indicates whether a transaction was fraudulent
+-> classify a new instance as fraudulent or not.
+
+Target Variable Definition
+The target fraud indicator is usually hard to (obtain) and
+determine
+
+● One can never be fully sure that a certain transaction is
+fraudulent
+● The target labels are typically not noise-free.
+Complex analytical modeling exercise
+Crucial to avoid overfitting
+127
+
+Regression
+
+Classification
+Target variable
+
+● Continuous
+● Varies along a
+predefined interval.
+○ limited
+○ unlimited
+
+● Categorical
+● It can only take on a
+limited set of
+predefined values
+○ Binary
+classification
+○ Multiclass
+classification
+
+128
+
+Linear Regression
+Technique to model a continuous target variable.
+The general formulation of the linear regression model
+
+●
+
+Y represents the target variable
+
+●
+
+X_1 , ... , X_N the explanatory variables.
+
+●
+
+β parameters measure the impact on the target variable Y of each of the
+individual explanatory variables.
+
+129
+
+LR: Parameter Estimation
+
+The β parameters can then be estimated by minimizing
+the following squared error function:
+
+●
+
+Y_i represents the target value for observation i
+
+●
+
+Y ̂ _i the prediction made by the linear regression model for observation i.
+
+130
+
+Linear Regression: Ordinary least
+squares (OLS) regression
+Minimizing the sum of all error squares.
+
+●
+
+X: the matrix with the explanatory variable values augmented with an
+additional column of 1 to account for the intercept term β_0
+
+●
+
+Y: the target value vector.
+
+131
+
+Linear Regression - Discussion
+Goal: Find the best fit line that can accurately predict the
+output of a continuous dependent variable with the help of
+independent variables:
+- Linear relationship between dependent variable and
+independent variable.
+
+132
+
+Logistic Regression
+
+Linear regression:
+When estimating this using OLS, two key problems arise:
+1. The errors/target are not normally distributed but follow a
+Bernoulli distribution with only two values;
+2. No guarantee that the target is between 0 and 1
+(~probability)
+133
+
+Logistic Regression vs Linear
+Regression
+Bounding functions
+
+134
+
+Logistic Regression vs Linear
+Regression
+Bounding functions
+
+Fo
+out r eve
+com ry p
+e is oss
+alw ible
+ays valu
+bet e o
+f
+we
+en z, the
+0a
+nd
+1
+
+135
+
+Logistic Regression
+Logistic Regression Model: Combination of the linear
+regression with the bounding function:
+
+Outcome: bounded between 0 and 1 (~ probability)
+136
+
+Logistic Regression: Activation
+Function
+We pass the weighted sum of inputs through an activation
+function that can map values in between 0 and 1
+Such activation function is known as sigmoid function and
+the curve obtained is called as sigmoid curve or S-curve.
+
+The β_i parameters of a logistic regression model are
+estimated using the maximum likelihood optimization.
+
+137
+
+Logistic Regression Property
+● It estimates a linear decision boundary to separate
+both classes.
+
+138
+
+Logistic Regression - discussion
+● Used for (mainly) Classification and Regression
+● Used to predict the categorical dependent variable with
+the help of independent variables.
+● Output: can be only between the 0 and 1.
+● Can be used where the probabilities between two
+classes is required.
+● Based on the concept of Maximum Likelihood
+estimation. According to this estimation, the observed
+data should be most probable.
+
+139
+
+Linear and Logistic Regression:
+Variable Selection
+Built-in procedures to perform variable selection
+●
+
+more concise
+
+●
+
+faster to evaluate
+
+Statistical hypotheses tests to verify whether the coefficient
+of a variable is significantly different from zero:
+● Linear regression -> Student’s t-distribution
+● Logistic regression -> Chi-squared distribution
+
+p-value = The probability of a getting a more extreme value
+than the one observed
+A low (high) p-value represents an (in)significant variable.
+140
+
+Linear and Logistic Regression:
+Variable Selection
+Built-in procedures to perform variable selection
+●
+
+more concise
+
+●
+
+faster to evaluate
+
+Statistical hypotheses tests to verify whether the coefficient
+of a variable is significantly different from zero:
+● Linear regression -> Student’s t-distribution
+● Logistic regression -> Chi-squared distribution
+
+p-value = The probability of a getting a more extreme value
+than the one observed
+A low (high) p-value represents an (in)significant variable.
+141
+
+Variable Selection
+The variable space can be navigated in three possible
+ways:
+● Forward regression starts from the empty model and
+always adds variables
+● Backward regression starts from the full model and
+always removes variables
+● Stepwise regression mix between the two
+
+142
+
+Evaluation Criteria for Variable
+Selection
+● Statistical significance (p-vaule)
+● Interpretability
+○ Sign of the regression coefficient: Direction of the
+relationship between a predictor variable and the response
+variable.
+■ Positive sign: as the predictor variable increases, the
+response variable also increases.
+■ Negative sign: as the predictor variable increases, the
+response variable decreases.
+
+● Operational efficiency: Amount of resources needed
+for the collection and preprocessing of a variable
+● Legal issues
+○ Some variables cannot be used because of privacy or
+discrimination concerns.
+143
+
+Linear and Logistic Regression
+● Predicting the
+continuous dependent
+variable with
+independent variables.
+● Find the best fit
+line/linear relationship
+○ predict the output for the
+continuous dependent
+variable based on
+independent variable.
+
+● Ordinary least squares
+● Regression
+○ Output: continuous
+values
+
+● Predict the categorical
+dependent variable with
+independent variables.
+● It estimates a linear
+decision boundary to
+separate both classes.
+● Maximum Likelihood
+estimation
+● Classification
+○ Output: between the 0 and
+1
+
+● (Regression)
+144
+
+Decision Trees
+Recursive-partitioning algorithms (RPAs)
+Tree-like structure -> patterns in an underlying data set
+
+● Top node = root node specifying a testing condition, of
+which the outcome corresponds to a branch leading up
+to an internal node.
+● The terminal nodes = leaf nodes assign fraud labels.
+145
+
+Decision Trees
+● Splitting decision: Which variable to split at what value
+(e.g., Transaction amount is > $100, 000 or not)
+● Stopping decision: When to stop adding nodes to the
+tree?
+● Assignment decision: What class (e.g., fraud or no
+fraud) to assign to a leaf node?
+○ Look at the majority class within the leaf node to make
+the decision (winner-take-all learning).
+
+146
+
+Splitting Decision
+In order to answer the splitting decision, one must define
+the concept of impurity or chaos.
+
+● Minimal impurity occurs when all customers are either
+good or bad.
+● Maximal impurity occurs when one has the same
+number of good and bad customers.
+147
+
+Splitting Decision: Quantifying
+impurity
+Impurity measures:
+● Entropy
+
+● Gini
+
+Decision trees aim at minimizing the impurity in the data
+148
+
+Splitting Decision
+Candidate splits are evaluated in terms of their decrease in
+impurity (GAIN)
+A higher gain is preferred
+The decision tree algorithm considers different candidate
+splits for its (root) node
+● greedy and recursive strategy by picking the one with
+the biggest gain.
+● perfectly parallelized and both sides of the tree
+○ increased efficiency
+149
+
+Stopping Decision
+If the tree continues to split -> one leaf node per observation
+Overfitting ( fit the specificities or noise in the data)
+● The tree has become too complex and fails to correctly
+model the trend in the data.
+● It will generalize poorly to new unseen data
+Avoid overfitting
+● Split data in
+○ Training sample (70%) -> make splitting decision
+○ Validation sample (30%)-> independent sample to monitor the
+misclassification error (or any other performance metric) .
+150
+
+Stopping Decision
+
+The error on the training sample
+keeps on decreasing as the
+splits become more and more
+specific and tailored towards it.
+
+151
+
+Stopping Decision
+On the validation
+sample, the error will
+initially decrease,
+which indicates that
+the tree splits
+generalize well.
+
+152
+
+Stopping Decision
+At some point the
+error will increase
+since the splits
+become too specific
+for the training sample
+as the tree starts to
+memorize it.
+
+153
+
+Stopping Decision
+Where the validation
+set curve reaches its
+minimum, the
+procedure should be
+stopped, as otherwise
+overfitting will occur.
+
+154
+
+Decision Tree Properties
+If every node had
+● Only two branches
+○ The testing condition can be implemented as a simple
+yes/no question.
+
+● More than two branches
+○ Multiway splits
+
+● Wider but less deep trees
+Every tree can also be represented as a rule set: every
+path from a root note to a leave node makes up a simple
+if-then rule
+155
+
+Decision Tree Properties: Rule Set
+Example
+● If Transaction amount >
+$100, 000 And
+Unemployed = No Then no
+fraud
+● If Transaction amount >
+$100, 000 And
+Unemployed = Yes Then
+fraud
+● If Transaction amount ≤
+$100, 000 And Previous
+fraud = Yes Then fraud
+● If Transaction amount ≤
+$100, 000 And Previous
+fraud = No Then no fraud 156
+
+Decision Tree Properties: Decision
+boundaries
+Decision trees essentially model decision boundaries
+orthogonal to the axes.
+
+157
+
+Using Decision Trees in Fraud
+Analytics
+● Variable selection: variables that occur at the top of the
+tree are more predictive
+● Measure the predictive strength of a variable
+○ calculate the Gain of a characteristic to gauge its
+predictive power
+
+● Analytical fraud model to be used directly into the
+business environment
+● Interpretability ...
+
+158
+
+Evaluating and Interpreting
+Clustering Solutions - PART 2
+Given clustering solution, build a decision tree with the
+ClusterID as the target variable
+
+White-box supervised techniques can be used to
+explain the solution of (unsupervised) black-box
+models
+159
+
+Using Decision Trees in Fraud
+Analytics
+Advantages
+● White-box model with a clear explanation: interpretable
+● Operationally efficient
+● Powerful techniques and allow for more complex
+decision boundaries than a logistic regression
+● Non-parametric: no normality or independence
+assumptions are needed
+Disadvantage
+● Highly dependent on the sample that was used for tree
+construction.
+○ A small variation in the underlying sample might yield a
+totally different tree.
+160
+
+Neural Networks
+“Neural networks are mathematical representations
+inspired by the functioning of the human brain”
+Neural networks can model very complex patterns and
+decision boundaries in the data.
+
+161
+
+Neural Networks
+“Neural networks are mathematical representations
+inspired by the functioning of the human brain”
+Neural networks can model very complex patterns and
+decision boundaries in the data.
+Generalizations of existing statistical models
+
+162
+
+Neural Networks: Generalizations of
+existing statistical models
+
+Logistic (linear) regression is a neural network with one
+neuron and a sigmoid activation function (identity
+transformation)
+
+163
+
+Neural Networks: Generalizations of
+existing statistical models
+Logistic Regression
+
+Logistic (linear) regression is a neural network with one
+neuron and a sigmoid activation function (identity
+transformation)
+
+164
+
+Neural Networks: Generalizations of
+existing statistical models
+Logistic Regression
+
+Logistic (linear) regression is a neural network with one
+neuron and a sigmoid activation function (identity
+transformation)
+
+165
+
+Neural Networks: Details
+Processing element or neuron performs two operations:
+1. it takes the inputs and multiplies them with the weights
+(including the intercept β_0 , which is the bias term)
+2. Puts this into a nonlinear transformation function
+(~logistic regression).
+
+166
+
+MultiLayer Perceptron (MLP) Neural
+Network
+● Input layer
+● Hidden layer
+○ Works like a feature extractor: combine the inputs into
+features that are then subsequently offered to the output
+layer to make the prediction
+
+● Output layer
+
+167
+
+Transformation functions (also
+called activation functions)
+
+The activation functions may differ per neuron, they are
+typically fixed for each layer.
+● In the output layer
+○ For classification (e.g., fraud detection),
+■ a logistic transformation, since the outputs can then be
+interpreted as probabilities
+
+○ For regression (e.g., amount of fraud),
+■ any of the transformation functions listed above.
+
+● In the hidden layer:
+○ hyperbolic tangent activation function.
+
+168
+
+Neural Networks: Details
+In the fraud analytics setting, complex patterns rarely occur.
+Recommended to use a neural networks with one hidden
+layer: Universal approximators, capable of approximating
+any function to any desired degree of accuracy on a
+compact interval.
+Data preprocessing:
+- Continuous variables: need to be standardized
+- Categorical variables (only): categorization can be used
+to reduce the number of categories.
+169
+
+Neural Network Weight Learning
+The optimization (for optimal parameter values) is more
+complex: Iterative algorithm that optimizes a
+cost-function:
+● Continuous target variable
+○ Mean Squared Error (MSE) cost function
+
+● Binary target variable
+○ Maximum Likelihood cost function
+
+The procedure starts from a set of random weights, which
+are then iteratively adjusted to the patterns in the data
+using an optimization algorithm (e.g., Back propagation
+learning, Conjugate gradient).
+170
+
+Neural Network Weight Learning
+Key issue: the curvature of the objective function is not
+convex and may be multimodal.
+
+The error function can thus have multiple local minima but
+typically only one global minimum
+If the starting weights are chosen in a suboptimal way, one
+may get stuck in a local minimum.
+171
+
+Neural Network Weight Learning
+Preliminary Training
+● Try out different starting weights
+● Start the optimization procedure for a few steps
+● Continue with the best intermediate solution
+Stopping Criterion
+The optimization procedure then continues until:
+● the error function shows no further progress,
+● the weights stop changing substantially
+● after a fixed number of optimization steps (Epochs).
+172
+
+Hidden Neurons (Weight and)
+Number
+Number of hidden neurons -> nonlinearity in data
+● More complex, nonlinear patterns -> more hidden
+neurons.
+They should be carefully tuned
+1. Split the data into a training, validation, and test set.
+2. Vary the number of hidden neurons
+3. Train a neural network on the training set
+4. Measure the performance on the validation set.
+5. Choose the number of hidden neurons with optimal
+validation set performance.
+6. Measure the performance on the independent test set.
+
+173
+
+Overfitting Problem
+Neural networks can model very complex patterns and
+decision boundaries in the data -> They can even model
+the noise in the training data -> Overfitting
+1° Option
+● Training set -> estimate the weights.
+● Validation set -> independent data set used to decide
+when to stop training and avoid this overfitting.
+2° Option
+Weight regularization: keep weights small in absolute
+sense to avoid fitting the noise in the data.
+● Add a weight size term to the objective function of the
+neural network.
+
+174
+
+Opening the Neural Network Black
+Box
+Black-box = relate inputs to outputs in a mathematically
+complex, nontransparent, and opaque way.
+● Applied as high-performance analytical tools in settings
+where interpretability is not a key concern.
+● In application areas where insight into the fraud
+behavior is important, one needs to be careful with NNs.
+Opening the Neural Network black box:
+1. Variable selection
+2. Rule extraction
+3. Two-stage models
+
+175
+
+Variable Selection
+Select variables that actively contribute to the NN output.
+In linear and logistic regression -> inspecting the p-values
+In neural networks -> no p-values.
+Hinton diagram
+● Visualizes the weights between the inputs and the
+hidden neurons as squares
+○ Size of the square is proportional to the size of the
+weight
+○ Color of the square represents the sign of the weight
+(e.g., black=negative weight and white=positive weight).
+176
+
+Variable Selection Procedure: Hinton
+diagram
+
+177
+
+Variable Selection Procedure: Hinton
+diagram
+1.
+
+Inspect the Hinton diagram and
+remove the variable whose weights
+are closest to zero.
+
+2.
+
+Reestimate the neural network with
+the variable removed. To speed up
+the convergence, it could be
+beneficial to start from the previous
+weights.
+
+3.
+
+Continue with step 1 until a
+stopping criterion is met. The
+stopping criterion could be a
+decrease of predictive performance
+or a fixed number of steps.
+
+178
+
+(Performance-driven) Selection:
+Backward Variable Selection
+1. Build a neural network with all N variables.
+2. Remove each variable in turn and reestimate the network.
+This will give N networks each having N – 1 variables.
+3. Remove the variable whose absence gives the best
+performing network (e.g., in terms of misclassification error,
+mean squared error).
+4. Repeat this procedure until the performance decreases
+significantly.
+
+179
+
+Variable selection - Discussion
+Variable selection
+● Allows users to see which variables are important and
+which ones are not
+● It does not offer a clear insight into its internal workings.
+The relationship between the inputs and the output
+remains nonlinear and complex.
+Sampling can be used to make the procedure less resource
+intensive and more efficient.
+180
+
+Rule Extraction Procedure
+Extract if-then classification rules, mimicking the behavior
+of the neural network:
+● Decompositional technique: decompose the
+network’s internal workings by inspecting weights and/or
+activation values.
+● Pedagogical technique: consider the neural network
+as a black box and use the neural network predictions
+as input to a white-box analytical technique such as
+decision trees
+○
+
+Can essentially be used with any underlying algorithm
+
+181
+
+Decompositional Rule Extraction
+Example
+
+182
+
+Pedagogical Rule Extraction
+Techniques
+
+183
+
+Rule Extraction Approaches
+Evaluation
+The rule sets must be evaluated in terms of
+● Accuracy
+● Conciseness
+● Fidelity measures to what extent the extracted rule set
+succeeds in mimicking the neural network and is
+calculated as follows:
+
+B
+● Benchmark the extracted rules/trees with a tree built
+directly on the original data.
+184
+
+Two-stage Model Setup
+1. Estimate an easy-to-understand model first (e.g., linear
+regression, logistic regression).
+a. This will give us the interpretability part.
+
+2. Use a neural network to predict the errors made by the
+simple model using the same set of predictors.
+a. performance benefit of using a nonlinear model.
+
+Both models are then combined in an additive way, for
+example as follows:
+It provides an ideal balance between model interpretability
+(which comes from the first part) and model performance
+(which comes from the second part).
+
+185
+
+Two-stage Model Setup
+
+186
+
+Support Vector Machines
+Support vector machines (SVMs) deal with the
+shortcomings of neural networks:
+● Objective function is non convex (multiple local minima).
+● Effort that to tune the number of hidden neurons.
+The origins of classification SVMs date back to the early
+dates of linear programming:
+- Objective function
+- Constraints
+
+187
+
+Linear Programming: Key Problem
+Problem: It can estimate multiple optimal decision
+boundaries for a perfectly linearly separable case.
+
+SVMs add an extra objective to the analysis.
+188
+
+The Linear Separable Case
+
+SVMs aim at maximizing this margin to pull both classes as far apart as
+possible.
+Support Vectors: Training points that lie on one of the hyperplanes H1 or H2
+Classification hyperplane: H0.
+New observations are checked whether they are situated above H0 in which
+case the prediction is +1 or below (prediction − 1).
+189
+
+The Linear Separable Case
+
+The optimization problem has a quadratic cost function
+Convex optimization problem with no local minima and only
+one global minimum.
+190
+
+The Linear Nonseparable Case
+Example
+
+191
+
+The Linear Nonseparable Case
+Overlapping class distributions: the SVM classifier can
+be extended with error terms
+
+● e_k error variables allow misclassifications.
+● C hyperparameter in the objective function balances the
+importance of maximizing the margin versus minimizing the
+error on the data.
+○ A high (low) value of C implies a higher (lower) risk of overfitting.
+192
+
+The Nonlinear SVM Classifier
+Nonlinear SVM classifier will map the input data to a higher
+dimensional feature space using some mapping φ(x).
+
+193
+
+Opening the SVM Black Box:
+Transparency
+Complex in settings where interpretability is important.
+● SVMs have a universal approximation property
+● They do not require tuning of the number of hidden
+neurons
+● Are characterized by convex optimization.
+Variable selection can be performed using the backward
+variable selection procedure:
+● This will essentially reduce the variables but not provide
+any additional insight into the workings of the SVM.
+194
+
+Opening the SVM Black Box:
+Transparency
+(Decompositional) Rule extraction approaches
+● the SVM can be represented as a neural network
+
+● The hidden layer uses kernel activation functions.
+○ The number of hidden neurons now corresponds to the
+number of support vectors and follows automatically from
+the optimization.
+
+● The output layer uses a linear activation function.
+195
+
+Opening the SVM Black Box:
+Transparency
+Pedagogical approach can be easily combined with SVMs
+since considers the underlying model as a black box.
+● SVM is first used to construct a data set with SVM
+predictions for each of the observations.
+● This data set is then given to a decision tree algorithm
+to build a decision tree.
+● Additional training set observations can be generated to
+facilitate the tree construction process.
+Two-stage models can be used to provide more
+comprehensibility.
+● a simple model (e.g., linear or logistic regression) is
+estimated first, followed by an SVM to correct the errors
+196
+of the latter.
+
+Ensemble Methods
+
+Ensemble Methods
+Aim at estimating multiple analytical models instead of
+using only one.
+● Multiple models can cover different parts of the data
+input space and complement each other’s deficiencies.
+● To be successful, models need to be sensitive to
+changes in the underlying data.
+Commonly used with decision trees:
+● Bagging
+● Boosting
+● Random forests.
+198
+
+Bagging (Bootstrap aggregating)
+1. Starts by taking B bootstraps from the underlying
+sample. A bootstrap is a sample with replacement.
+2. Build a classifier for every bootstrap.
+● For classification, a new observation will be classified
+by letting all B classifiers vote.
+● For regression, the prediction is the average of the
+outcome of the B models.
+The number of bootstraps B can either be fixed or tuned via
+an independent validation data set.
+
+199
+
+Bagging (Bootstrap aggregating):
+Instability
+Key element for bagging: instability of the analytical
+technique.
+If perturbing the data set by means of the bootstrapping
+procedure can alter the model constructed, then bagging
+will improve the accuracy
+For models that are robust with respect to the underlying
+data set, Bagging will not give much added value.
+
+200
+
+Boosting
+Estimate multiple models using a weighted data sample.
+1. Starting from uniform weights
+2. Iteratively re-weight the data according to the
+classification error:
+a. misclassified cases get higher weights.
+
+The idea: difficult observations should get more attention.
+The final ensemble model is then a weighted combination
+of all the individual models.
+A popular implementation of this is the Adaptive
+boosting/Adaboost procedure
+
+201
+
+Boosting
+The number of boosting runs can be fixed or tuned using
+an independent validation set.
+Key advantage: easy to implement.
+Potential drawback: risk of overfitting to the hard
+(potentially noisy) examples in the data, which will get
+higher weights as the algorithm proceeds. This is especially
+relevant in a fraud detection setting because the target
+labels are typically quite noisy.
+
+202
+
+Random Forests
+It creates a forest of decision trees:
+
+203
+
+Random Forests
+Key concepts
+● The dissimilarity amongst the base classifiers, which is
+obtained by adopting a bootstrapping procedure to select the
+training samples of the individual base classifiers
+● The selection of a random subset of attributes at each node
+● The strength of the individual base models.
+
+The diversity of the base classifiers creates an ensemble
+that is superior in performance compared to the single
+models.
+204
+
+Evaluating Ensemble Methods
+Various benchmarking studies have shown that random forests
+can achieve excellent predictive performance.
+● They rank amongst the best performing models across a
+wide variety of prediction tasks .
+● They can deal with data sets having only a few observations,
+but with lots of variables.
+● They are highly recommended when high performing
+analytical methods are needed for fraud detection.
+● They are a black-box models.
+○ Due to the multitude of decision trees that make up the
+ensemble, it is very hard to see how the final classification is
+made.
+○ To shed some light on the internal workings of an ensemble is
+by calculating the variable importance (VI).
+
+205
+
+Evaluating a Fraud
+Detection Model
+
+Key Decisions
+When evaluating predictive models, two key decisions
+need to be made.
+A first decision concerns the data set split up.
+A second decision concerns the performance metrics.
+
+207
+
+Splitting Up the Data Set - Large
+Dataset
+The decision how to split up the data set for performance
+measurement depends on its size.
+Large data sets -> the data can be split up into
+● (70%) Training dataset to build the model
+● (30%) Test dataset to calculate its performance
+
+208
+
+Splitting Up the Data Set - Large
+Dataset
+Strict separation between training and test sample:
+● No observation that was used for training, can be used
+for testing.
+In case of decision trees or neural networks, the validation
+sample is a separate sample -> it is used during model
+development (i.e., to make the stopping decision).
+● 40 % training, 30 % validation, and 30 % test sample.
+Stratified split-up ensures that fraudsters / nonfraudsters
+are equally distributed amongst the various samples.
+209
+
+Splitting Up the Data Set - Small
+Dataset
+Small data sets -> special schemes need to be adopted.
+● Cross-validation
+○ the data is split into K folds (e.g., 5, 10). An analytical model is
+then trained on K – 1 training folds and tested on the remaining
+validation fold.
+○ Repeated for all possible validation folds resulting in K
+performance estimates, which are averaged.
+
+● Leave-one-out cross-validation
+○ every observation is left out in turn and a model is estimated on
+the remaining K – 1 observations.
+○ This gives K analytical models in total.
+
+In stratified cross validation, make sure the no fraud/fraud
+odds are the same in each fold.
+
+210
+
+Splitting Up the Data Set:
+Cross-Validation
+
+211
+
+Model Selection
+Cross-validation gives multiple models
+Key question “what should be the final model that is being
+outputted from the procedure”?
+● All models collaborate in an ensemble setup by using a
+(weighted) voting procedure.
+● Do leave one out cross-validation and pick one of the
+models at random. Since the models differ up to one
+observation only, they will be quite similar anyway.
+● Build one final model on all observations but report
+the performance coming out of the cross-validation
+procedure as the best independent estimate.
+
+212
+
+Performance Metrics
+Consider a fraud detection example for a five-customer
+data set.
+
+One can now map the scores to a predicted classification
+label by assuming a default cut-off of 0.5
+
+Confusion matrix
+
+213
+
+Performance Metrics
+Classification accuracy is the percentage of correctly
+classified observations: (TP + TN) / (TP+FP+FN+TN)
+Classification error is the complement thereof and also
+referred to as the misclassification rate: (FP + FN) /
+(TP+FP+FN+TN)
+Sensitivity, recall or hit rate measures how many of the
+fraudsters are correctly labeled as a fraudster: TP /
+(TP+FN)
+Specificity looks at how many of the nonfraudsters are
+correctly labeled by the model as nonfraudster: TN /
+(FP+TN)
+Precision indicates how many of the predicted fraudsters
+are actually Fraudsters: TP / (TP+FP)
+
+214
+
+Computation Example
+
+215
+
+Performance Metrics
+All these classification measures depend on the cut-off.
+For a cut-off of 0 (1)
+● the classification accuracy becomes 40% (60%)
+● the error 60% (40%)
+● the sensitivity 100% (0%)
+● the specificity 0% (100%)
+● the precision 40% (0%)
+● the F-measure 0.57% (0%)
+Given this dependence, it would be nice to have a performance
+measure that is independent from the cut-off.
+
+216
+
+Receiver Operating Characteristic
+(ROC) Curve
+
+pe
+rfe
+
+ct
+m
+
+od
+
+el
+
+The receiver operating characteristic (ROC) curve then
+plots the sensitivity versus 1 - specificity or FPR
+
+217
+
+Area under the ROC curve (AUC)
+A problem arises if the curves intersect.
+AUC provides a simple figure-of-merit for the performance
+● The higher the AUC, the better the performance
+● Bounded between 0 and 1
+● Can be interpreted as a probability.
+○ It represents the probability that a randomly chosen
+fraudster gets a higher score than a randomly chosen
+nonfraudster
+
+A good classifier should have an ROC above the diagonal
+and AUC bigger than 50%.
+
+218
+
+Other Performances Metrics
+● Interpretability
+○ White-box : Linear and logistic regression, and decision
+trees.
+○ Black-box: Neural networks, SVMs, and ensemble
+methods.
+
+● Justifiability
+○ Verifies to what extent the relationships modeled are in
+line with expectations
+■ verifying the univariate impact of a variable on the model’s
+output.
+
+● Operational efficiency: ease with which one can
+implement, use, and monitor the final model
+■ to be able to quickly evaluate the fraud model
+■ Linear and rule based models are easy to implement
+
+219
+
+Developing predictive models for
+skewed data sets
+Fraud-detection data sets often have a very skew target
+class distribution frauds are <= 1%.
+This creates problems for the analytical techniques:
+● Flooded by nonfraudulent observations and thus tend
+toward classifying every observation as nonfraudulent.
+
+Recommended to increase the number of fraudulent
+observations or their weight, such that the analytical
+techniques can pay better attention to them.
+
+220
+
+Developing predictive models for
+skewed data sets
+Increase the number (and variability) of frauds is by
+1. Increasing the time horizon for prediction.
+a.
+2.
+
+Instead of predicting fraud with a six-month forward-looking time
+horizon, a 12-month time horizon
+
+Sampling every frauds twice (or more).
+a.
+
+We predict fraud with a one-year forward-looking time horizon using
+information from a one year backward looking time horizon
+i. By shifting the observation point earlier or later, the same
+fraudulent observation can be sampled twice.
+ii. The variables collected will be similar but not perfectly the same,
+since they are measured on a different time frame.
+
+Finding the optimal number is subject to a trial-and-error
+exercise
+● Depending on the skewness of the target
+221
+
+Oversampling
+Replicate frauds two or more times so as to make the
+distribution less skew.
+
+222
+
+Undersampling
+Remove nonfrauds two or more times so as to make the
+distribution less skew.
+● Based on business experience whereby obviously
+legitimate observations are removed.
+○ Low-value transactions or inactive accounts.
+
+223
+
+Under- and oversampling
+Under- and oversampling can also be combined
+Undersampling usually results in better classifiers than
+oversampling
+They should be conducted on the training data and not on
+the test data to give an unbiased view on model
+performance
+
+224
+
+Under- and oversampling
+What is the optimal nonfraud/fraud odds that should be
+aimed for by doing under- or oversampling?
+Working toward a balanced sample with the same number
+of fraudsters and nonfraudsters, it may biases the
+performances
+It is recommended to stay as close as possible to the
+original class distribution to avoid unnecessary bias.
+
+225
+
+Practical approach to determine the
+optimal class distribution
+1. An analytical model is built on the original data set with
+the skew class distribution (e.g., 95%/5%)
+2. The AUC of this model is recorded (possibly on an
+independent validation data set).
+3. Over- or undersampling is used to change the class
+distribution by 5 percent (e.g., 90%/10%).
+4. The AUC of the model is recorded.
+5. Subsequent models are built on samples of 85%/15%,
+80%/20%, 75%/25%, recording their AUC.
+6. Once the AUC starts to stagnate (or drop), the
+procedure stops and the optimal odds ratio has been
+found.
+
+226
+
+Synthetic Minority Oversampling
+Technique (SMOTE)
+Rather than replicating the minority observations, SMOTE
+works by creating synthetic observations based on the
+existing minority observations.
+● For each minority class observation, it calculates the k nearest
+neighbors.
+○ Depending on the amount of oversampling needed, one or
+more of the k-nearest neighbors are selected to create the
+synthetic examples.
+● Randomly create two synthetic examples along the line connecting
+the observation under investigation with the two random nearest
+neighbors.
+●
+
+SMOTE then combines the synthetic oversampling of the minority
+class with under-sampling the majority class.
+
+SMOTE usually works better than either under- or
+oversampling.
+
+227
+
+SMOTE
+
+228
+
+Cost-sensitive Learning
+Assigns higher misclassification costs to the minority class
+
+Usually C(+, +) = C(–, –) = 0, and C(–, +) > C(+, –).
+Minimizing the misclassification cost during classifier
+learning.
+229
+
+The End
+
+

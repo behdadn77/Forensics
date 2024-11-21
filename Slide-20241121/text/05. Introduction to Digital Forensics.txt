@@ -1,0 +1,108 @@
+5. Introduction to Digital
+Forensics
+Digital Forensics and Cybercrime course
+Prof. Zanero
+
+What does “Digital Forensics”
+mean?
+● Forensics is the application of scientific
+analysis methods to reconstruct evidence.
+● Digital (or Computer) Forensics is the
+application of scientific analysis methods to
+digital data, computer systems, and network
+data to reconstruct evidence.
+
+2
+
+The “Daubert” standard (US)
+RULE 702. TESTIMONY BY EXPERT WITNESSES
+A witness who is qualified as an expert by knowledge,
+skill, experience, training, or education may testify in the
+form of an opinion or otherwise if:
+(a) The expert's scientific, technical, or other specialized
+knowledge will help the trier of fact to understand the
+evidence or to determine a fact in issue;
+(b) The testimony is based on sufficient facts or data;
+(c) The testimony is the product of reliable principles
+and methods; and
+(d) The expert has reliably applied the principles and
+methods to the facts of the case.
+3
+
+Elements of the Daubert standard
+● Relevance and reliability: expert testimony
+"relevant to the task at hand" and rests "on a
+reliable foundation"
+● Scientific knowledge = scientific
+method/methodology
+What is the “scientific method”?
+
+4
+
+What does “scientific” mean?
+● Scientific = Repeatable (Galileo, 1650)
+
+● Scientific = Falsifiable (Popper, 1934)
+“In so far as a scientiﬁc statement speaks about reality, it must be
+falsiﬁable: and in so far as it is not falsiﬁable, it does not speak about
+reality.”
+― Karl R. Popper, The Logic of Scientific Discovery
+
+5
+
+Daubert test for “scientific”
+● Factors to consider:
+○ Whether the theory or technique employed by the
+expert is generally accepted in the scientific
+community
+○ Whether it has been subjected to peer review and
+publication
+○ Whether it can be and has been tested
+○ Whether the known or potential rate of error is
+acceptable; and
+○ Whether the research was conducted independent
+of the particular litigation or dependent on an
+intention to provide the proposed testimony.
+6
+
+Example of forensic engagements
+Situations and constraints
+
+Crimes and events (examples)
+
+● Internal investigations (inside
+an organization)
+
+● Child pornography
+● Fraud
+
+● Criminal investigations
+(defense or prosecution)
+
+● Cyber extortion / threats
+
+● Post-mortem of a system to
+assess damage / define
+recovery strategy
+
+● Copyright infringements
+● Policy violations
+
+● Espionage
+
+● Research (honeypot, etc)
+
+7
+
+4 phases of an investigation
+● Source acquisition
+● Evidence identification
+● Evaluation
+● Presentation
+
+M. M. Pollitt, (1995) “Computer Forensics: An Approach to Evidence in
+Cyberspace”, in Proceeding of the National Information Systems
+Security Conference, Baltimore, MD, Vol. II, pp. 487-491
+8
+
+

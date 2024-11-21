@@ -1,0 +1,267 @@
+1. Cybercrime: Threat
+Landscape
+Digital Forensics and Cybercrime course
+Prof. Zanero
+
+Recall: Security, Risk, Threat
+Risk: statistical and economical evaluation of
+the exposure to damage because of the
+presence of vulnerabilities and threats.
+Risk = Asset x Vulnerabilities x Threats
+controllable variables
+
+independent
+variable
+
+Security: managing risk vs. cost
+
+2
+
+Threat landscape
+Three “dimensions” for threats:
+● Internal vs external
+● Generic vs targeted
+● Financially motivated vs others
+
+3
+
+A Gartner quadrant of threats
+Generic
+
+Specific
+
+Internal
+
+Disgruntled
+employee
+
+Socially-engineered or
+dishonest
+employee
+
+External
+
+Criminals, usually
+looking to make
+$$$
+
+A variety of advanced
+attackers
+
+= financially motivated (mostly/exclusively, if solid)
+4
+
+Internal threats
+
+5
+
+Data breaches and targeted attacks
+
+Source: https://enterprise.verizon.com/resources/reports/dbir/
+
+6
+
+30 YEARS OF MALICIOUS SOFTWARE
+malicious botnets
+Strategical attacks
+
+New aspects:
+high-proﬁle targets
+Mass attacks
+New aspects:
+Demonstration
+proﬁt oriented
+showing off skills
+
+organized groups
+
+demonstrate
+
+opportunism
+
+critical infrastructures
+political activism
+espionage
+states as new actor
+
+7
+
+Financially-oriented attacks
+● The attackers are now interested in
+monetizing their attacks
+
+8
+
+Financially-oriented attacks
+● The attackers are now interested in
+monetizing their attacks
+● Direct monetization
+○
+○
+○
+○
+
+Credit card / bank account fraud
+Ransomware
+Fake AVs
+Premium calls (dialers) - almost extinguished
+
+9
+
+10
+
+BRIEF HISTORY OF RANSOMWARE
+1996
+
+2000
+
+2004
+
+2012
+
+2013
+
+2014
+
+2015
+
+...WannaCry…?
+
+CBT-Locker
+New Simplocker
+GpCode
+CryptoWall
+One_Half
+
+Reveton
+Koler
+Simplocker
+
+Prototype
+
+Svpeng
+ScarePackage
+CryptoLocker
+Reveton
+11
+
+12
+
+Ransomware attacks
+
+13
+
+14
+
+Encryption mechanism
+
+15
+
+Financially-oriented malware
+● The attackers are now interested in
+monetizing their malware
+● Direct monetization
+○
+○
+○
+○
+
+Credit card / bank account fraud
+Ransomware
+Fake AVs
+Premium calls (dialers) - almost extinguished
+
+● Indirect monetization
+○ Information gathering
+○ abuse of computing resources
+○ rent or sell botnet infrastructures
+16
+
+17
+
+Rise of the Bots
+● Abuse of IRC bots (IRCwars):
+○ IRCwars: one of the first documented DDoS attacks
+
+● 1999: trinoo "DDoS attack tool"
+○ originally ran on Solaris (later ported to Windows)
+○ setup of the botnet was mostly manual
+○ August 1999: DDoS attack against a server at
+University of Minnesota using at least 227 bots
+(http://staff.washington.edu/dittrich/misc/trinoo.analysis)
+
+● 2000s: DDoS attacks against high profile
+websites (Amazon, CNN, eBay) got huge
+media coverage
+18
+
+Geolocation of botnet C&Cs
+
+Source: https://www.spamhaus.org/news/article/800/spamhaus-botnet-threat-update-q2-2020
+
+19
+
+Type of malware families
+
+Source: https://www.spamhaus.org/news/article/800/spamhaus-botnet-threat-update-q2-2020
+
+20
+
+Anatomy of a drive-by download
+
+"Manufacturing Compromise: The Emergence of Exploit-as-a-Service"
+http://cseweb.ucsd.edu/~voelker/pubs/eaas-ccs12.pdf
+
+23
+
+The Cybercrime Ecosystem
+● Organized groups
+● Various "activities"
+○
+○
+○
+○
+
+exploit development and procurement
+site infection
+victim monitoring
+selling "exploit
+kits"
+○ They even offer
+support hotlines...
+
+24
+
+Ecosystem (a partial view)
+
+25
+
+Exploitation kits sales
+
+Gudmunds, indicted for
+running dark0de
+
+26
+
+Blackhole: famous exploit kit
+
+Dmitry “Paunch” Fedotov, arrested
+October 2013 - Author of Black Hole
+
+27
+
+28
+
+Monetization on the dark web
+
+29
+
+Dark web caters also to other crimes
+
+30
+
+Money mules
+
+31
+
+

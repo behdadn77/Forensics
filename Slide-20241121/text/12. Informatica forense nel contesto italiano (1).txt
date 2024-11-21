@@ -1,0 +1,82 @@
+12. Informatica forense
+nel contesto italiano
+Digital Forensics and Cybercrime course
+Prof. Zanero
+
+Lessico italiano
+■
+
+■
+
+■
+■
+
+■
+
+Forensics si traduce comunemente come forense, ma è un
+evidente anglismo. In italiano forense significa “relativo al tribunale”.
+Comunque è nell'uso comune: patologia forense, informatica
+forense
+La traduzione vera del termine in italiano è criminalistica, ovvero
+l'applicazione di una disciplina scientifica all'analisi del crimine.
+Quindi si potrebbe dire (ma non si dice) “criminalistica informatica”
+Assolutamente non si dice, è sbagliato, non esiste in italiano
+“forensica” o “forensico”. Ingegnere avvisato, mezzo salvato.
+Nel diritto penale italiano, il termine “ripetibile” ha un significato
+tecnico che vedremo insieme. Attenzione a non confondervi tra il
+significato “scientifico” e quello tecnico.
+Nel diritto penale italiano, la “prova” è quella che si forma nel
+dibattimento di fronte al giudice. Quindi il termine evidence va
+tradotto come elementi probatori se il lessico è importante.
+2
+
+Acquisition
+Key difference with the USA – beware, forensic procedures have
+been developed with the USA in mind
+Evidence in USA: “chain of custody”, and admissibility
+In Italy evidence is based on the evaluation performed by the judge
+● Law 48/2008 (convention of Budapest on cybercrime) introduced at
+last in the Italian law sound computer forensic requirements
+● In ancient times... (1994, Italian Crackdown,
+http://www.olografix.org/gubi/estate/itacrack.htm)
+● … but even in modern times …
+● I've seen things you people wouldn't believe. Attack ships on fire off
+the shoulder of Orion. I watched C-beams glitter in the dark near
+the Tannhauser gate. All those moments will be lost in time... like
+tears in rain...
+
+3
+
+Repeatability problem
+In Italian law, a repeatable analysis (accertamento ripetibile) is one that
+does not cause an irreversible alteration of the object.
+
+Analisi ripetibili (art. 359 cpp): Il pubblico ministero, quando
+procede ad accertamenti, rilievi segnaletici, descrittivi o
+fotografici e ad ogni altra operazione tecnica per cui sono
+necessarie specifiche competenze, può nominare e
+avvalersi di consulenti, che non possono rifiutare la loro
+opera.
+
+4
+
+Repeatability problem
+A non repeatable analysis which is routinely performed:
+● an autopsy; chemical analyses which require reagents; etc.
+Analisi irripetibile (art. 360 cpp)
+● Quando gli accertamenti previsti dall’art. 359 riguardano persone, cose o
+luoghi il cui stato è soggetto a modificazione, il pubblico ministero avvisa,
+senza ritardo, la persona sottoposta alle indagini, … della facoltà di
+nominare consulenti tecnici.
+● I difensori nonché i c.t. eventualmente nominati hanno diritto di assistere
+al conferimento dell'incarico, di partecipare agli accertamenti e di
+formulare osservazioni e riserve.
+● Qualora, prima del conferimento dell'incarico, la persona sottoposta alle
+indagini formuli riserva di promuovere incidente probatorio, il p.m dispone
+che non si proceda agli accertamenti salvo che questi, se differiti, non
+possano più essere utilmente compiuti. (a pena di inutilizzabilità, 4o
+comma)
+
+5
+
+

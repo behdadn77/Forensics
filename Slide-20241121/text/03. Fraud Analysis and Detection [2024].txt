@@ -1,0 +1,1637 @@
+03. Fraud Analysis and
+Detection
+Cybercrime and Digital Forensics
+Prof. Carminati
+
+Who I Am
+Michele Carminati
+● Email: michele.carminati@polimi.it
+● Office: 1st floor, building 20 or NECSTlab, DEIB
+● Office hours: just e-mail me and we’ll find a timeslot
+● Phone: 4041
+
+Research Topics:
+● Machine Learning for Security
+● Security of Machine Learning
+2
+
+Agenda
+● Frauds: Definition and Types
+● Fraud Detection and Prevention
+● Big data and Analytics
+● Fraud analytics process model
+○ Develop a data-driven fraud-detection system.
+
+3
+
+Core Concepts
+Fraud
+
+Expert Knowledge
+
+Fraudsters
+
+4
+
+Fraud
+
+... What is a fraud? ...
+
+5
+
+Fraud
+“Wrongful or criminal deception intended to result in
+financial or personal gain”
+Oxford Dictionary
+
+6
+
+Fraud
+“Wrongful or criminal deception intended to result in
+financial or personal gain”
+Oxford Dictionary
+
+7
+
+Fraud
+“Wrongful or criminal deception intended to result in
+financial or personal gain”
+Oxford Dictionary
+
+... or better ...
+“Fraud is an uncommon, well-considered, imperceptibly
+concealed, time-evolving and often carefully organized
+crime which appears in many types of forms.”
+Van Vlasselaer et al.
+
+Fraud is a social phenomenon
+8
+
+Fraud Characteristics
+... uncommon ...
+Only a minority of cases concerns fraud, of which only a
+limited number will be known to concern fraud.
+
+9
+
+Fraud Characteristics
+... uncommon ...
+Only a minority of cases concerns fraud, of which only a
+limited number will be known to concern fraud.
+This makes it difficult to
+● Detect fraud: fraudulent cases are covered by the
+legitimate ones
+● Learn from historical cases, since only few examples
+are available
+10
+
+Fraud Characteristics
+...well-considered and imperceptibly
+concealed ...
+Fraudsters try to remain unnoticed and covered.
+● blend in frauds
+● not behave different from non-fraudsters
+Fraudsters hide very well by well-considering and
+planning how to precisely commit fraud.
+● Frauds are not impulsive and unplanned.
+11
+
+Fraud Characteristics
+... time-evolving ...
+Fraud-detection systems
+improve and learn by
+example.
+
+Fraudsters adapt and
+refine their methods to
+remain undetected.
+
+12
+
+Fraud Characteristics
+... time-evolving ...
+Fraud-detection systems
+improve and learn by
+example.
+
+Fraudsters adapt and
+refine their methods to
+remain undetected.
+
+Fraudsters techniques evolve in time
+Along with or better ahead of fraud-detection mechanisms.
+Cat-and-Mouse Game
+13
+
+Fraud Characteristics
+... carefully organized crime ...
+Fraudsters
+● Do not operate independently
+● Involve complex and organized structures
+Fraud = not an isolated event
+To detect fraud the context should be taken into account.
+
+14
+
+15
+
+Singh, Abhinav. "The underground ecosystem of credit card fraud."
+Black Hat Asia (2015).
+
+16
+
+Why do People Commit Fraud?
+Basic driver for commiting fraud = potential monetary
+gain or benefit.
+
+Fraud Triangle: Basic conceptual model that presents the factors
+that explains the drivers for an individual to commit fraud
+17
+
+Frauds Categories
+● Banking and Credit card fraud
+● Insurance fraud
+● Corruption
+● Counterfeit
+● Product warranty fraud
+● Healthcare fraud
+● Telecommunications fraud
+● Money laundering
+● Click fraud
+● Identity theft
+● Tax evasion
+● Plagiarism
+
+18
+
+Frauds Categories:
+Banking and Credit Card Fraud
+Unauthorized taking of another’s credit
+
+1. Application fraud: obtaining new credit cards from
+issuing companies by using false PII, and then spending
+as much as possible in a short space of time.
+2. Behavioral fraud: details of legitimate cards are
+obtained fraudulently. It does not necessarily require
+stealing the physical card, but only credentials.
+19
+
+Frauds Categories:
+Insurance Fraud
+Fraud related to any type of insurance
+● From the side of the seller of an insurance contract
+○ selling policies from nonexistent companies;
+○ churning policies to create more commissions.
+
+● From the side of the buyer of an insurance contract
+○ exaggerated claims (property)
+○ falsified medical history (health)
+○ postdated policies, faked death, kidnapping or murder
+(life)
+○ faked damage (automobile )
+20
+
+Frauds Categories:
+Corruption
+The misuse of entrusted power for private gain.
+Many Subtypes of corruption
+
+21
+
+Frauds Categories:
+Counterfeit
+An imitation intended to be passed off deceptively as
+genuine
+Counterfeit typically concerns valuable objects
+● credit cards,
+● identity cards,
+● popular products,
+● money,
+● ...
+
+22
+
+Frauds Categories:
+Product warranty fraud
+Product warranty = Type of guarantee that a manufacturer
+makes regarding the condition of its product.
+● Terms in which repairs or exchanges will be made in the
+event that the product does not function as originally
+described or intended.
+Fraudulently claiming compensation or remuneration
+based on a product warranty.
+
+23
+
+Frauds Categories:
+Healthcare fraud
+Filing of dishonest healthcare claims to make profit.
+
+24
+
+Frauds Categories:
+Telecommunications fraud
+Theft or use of telecommunication services to commit
+other forms of fraud
+Cloning fraud = the cloning of a phone number and the
+related call credit by a fraudster.
+Superimposition fraud = fraudulent usage is added to the
+legitimate usage of an account.
+
+25
+
+Frauds Categories:
+Money laundering
+Taking the proceeds of criminal activity and making them
+appear legal
+● Allows criminals to transform illegally obtained gain
+into seemingly legitimate funds.
+It is a worldwide problem, with an estimated $300 billion
+gain in the United States.
+
+26
+
+Frauds Categories:
+Click fraud
+Illegal clicks on a website’s click-through
+advertisements to increase the payable number of
+clicks to the advertiser.
+The illegal clicks could either be performed by
+● manually
+● automated
+
+27
+
+Frauds Categories:
+Identity theft
+Obtaining the personal or financial information of another
+person for the purpose of assuming that person’s identity
+to make transactions or purchases.
+● Sift through trash bins looking for bank account and
+credit card statements.
+● Accessing databases to steal lists of customer
+information.
+
+28
+
+Frauds Categories:
+Tax evasion
+Illegal act or practice of failing to pay taxes that are
+owed.
+Example
+Knowingly not reporting or underreporting income
+
+29
+
+Frauds Categories:
+Plagiarism
+Steal and pass off the ideas or words of another as own
+● to use another’s production without crediting the source,
+● to commit literary theft,
+● to present as new and original an idea or product
+derived from an existing source.
+It involves both stealing someone else’s work and lying
+about it afterward.
+
+30
+
+Possible Fraud Vector:
+Social Engineering
+“Social engineering uses influence and persuasion to deceive
+people by convincing them that the social engineer is someone he
+is not, or by manipulation. As a result, the social engineer is able to
+take advantage of people to obtain information with or without the
+use of technology”
+-KEVIN D. MITNICK & William L. Simon - Art of Deception
+
+“The art, or better yet, science, of skilfully manoeuvring human
+beings to take action in some aspect of their lives”
+– Christopher Hadnagy
+31
+
+What is Social Engineering?
+“The act of manipulating a person to take an action that
+may or may not be in the target’s best interest. This may
+include obtaining information, gaining access, or getting the
+target to take certain action.”
+Attacker uses human interaction to obtain or compromise
+information by psychologically manipulating a person into
+knowingly or unknowingly giving up this information.
+Essentially 'hacking' into a person to steal valuable
+information from many sources.
+32
+
+Why Social Engineering ?
+It consistently works, while technology vulnerabilities are
+hardened and solved
+
+“You could spend a fortune purchasing technology and
+services from every exhibitor, speaker and sponsor at the
+RSA Conference, and your network infrastructure could still
+remain vulnerable to old-fashioned manipulation.”
+Kevin Mitnick
+
+33
+
+Why Social Engineering ?
+Path of Least Resistance
+○ Why spend hours, days, weeks to crack a password
+when you can just ask for it?
+
+34
+
+Why Social Engineering ?
+People are the largest vulnerability in any security chain!
+
+● No technology in the world can prevent social
+engineering!
+○ There is no patch for human stupidity!
+35
+
+Famous Social
+Engineering Cases
+
+36
+
+Kevin Mitnick
+American computer security consultant, author, and
+convicted hacker.
+● Best known for his high-profile 1995 arrest
+● Five years in prison for various computer and
+communications-related crimes.
+
+37
+
+Frank Abagnale
+● Currently American security consultant
+● Background as a former con man, check forger, and
+notorious impostor while he was between the ages of 15
+and 21.
+● Claims to have assumed no fewer than eight identities,
+including an airline pilot, a physician, a U.S. Bureau of
+Prisons agent, and a lawyer.
+● Abagnale escaped from police custody twice (once from
+a taxiing airliner and once from a U.S. federal
+penitentiary) before turning 22 years old.
+● He served less than five years in prison before starting
+to work for the federal government.
+38
+
+Frank Abagnale ....
+
+39
+
+Frank Abagnale in Movies
+
+40
+
+41
+
+Phishing
+“Phishing is the criminally fraudulent process of attempting
+to acquire sensitive information by masquerading as a
+trustworthy entity in an electronic communication"
+
+Examples:
+● Deceptive “mass mailing”, URL, and Email Manipulation
+○
+○
+
+Send an email that looks legitimate
+Link to a fraudulent web page that looks legitimate
+■ A URL like (http://www.company.com) looks almost identical to
+(http://www.cornpany.com)
+42
+
+Phishing
+“Phishing is the criminally fraudulent process of attempting
+to acquire sensitive information by masquerading as a
+trustworthy entity in an electronic communication"
+
+Examples:
+● Deceptive “mass mailing”, URL, and Email Manipulation
+○
+○
+
+Send an email that looks legitimate
+Link to a fraudulent web page that looks legitimate
+■ A URL like (http://www.company.com) looks almost identical to
+(http://www.cornpany.com)
+43
+
+The Nigerian Prince Scam
+● Email/Letter requesting the victim to help a Super rich
+“nigerian prince” into retrieving the money from an
+account. In exchange for only some little help.
+● After some work, a small issue comes out and the victim
+should pay a little to overcome it
+● ...and other issues on, and on, and on
+
+44
+
+Vishing
+
+45
+
+Fraud is a social phenomenon
+
+Frauds Impact
+● A typical organization loses 5 percent of its revenues to
+fraud each year (www.acfe.com).
+● The total cost of insurance fraud (non–health insurance) in
+the United States is estimated to be more than $40 billion
+per year (www.fbi.gov).
+● Fraud is costing the United Kingdom £73 billion a year
+(National Fraud Authority).
+● Credit card companies “lose approximately seven cents
+per every hundred dollars of transactions due to fraud”.
+
+Need to invest into up-to-date defense infrastructures
+49
+
+Anti-Fraud Strategy
+Fraud Prevention and Detection
+
+Fraud Detection and Prevention
+Systems
+Advanced Anti-Fraud mechanisms:
+● Reduce losses due to fraud
+
+51
+
+Fraud Detection and Prevention
+Systems
+Advanced Anti-Fraud mechanisms:
+● Reduce losses due to fraud
+○ Prevented & Detected
+○ Fraudsters, like other criminals, tend to look for the easy
+way and will look for other, easier opportunities
+
+52
+
+Fraud Detection and Prevention
+● Fraud detection: recognize or discover
+fraudulent activities (Ex-post approach)
+● Fraud prevention: Avoid or reduce fraud
+(Ex-ante approach)
+
+Complementary ... but ... not independent
+53
+
+Banking Fraud
+Authentication
+
+Auth
+Token
+
+Social
+Engineering
+(Phishing)
+Credentials
+Database Theft
+
+Token
+
+Malware
+(Banking
+Trojan)
+
+Token
+
+Auth
+
+€€€
+
+Financial
+Services
+
+€€€
+
+Banking Fraud Detection/Prevention
+Authentication
+
+Auth
+Token
+
+Social
+Engineering
+(Phishing)
+Credentials
+Database Theft
+
+Token
+
+Auth
+
+Financial
+Services
+
+€€€
+
+Malware
+(Banking
+Trojan)
+
+€€€
+
+Token
+Amount
+UserId
+
+Amount
+
+Time
+
+IBAN
+
+Count1d
+
+Sum1d
+
+Count7d
+
+...
+
+...
+Aggregated
+Transactions
+
+Raw
+Transactions
+
+Detection
+Legitimate
+
+Prevention
+
+Data
+Aggregation
+
+ML
+Classifier
+
+Fraud
+Fraud Detector
+Financial
+Institution
+
+55
+
+Fraud Detection and Prevention
+Complementary ... but ... not independent
+
+Prevention mechanism
+Fraudsters adapt and
+change their behavior
+
+Impact detection power
+56
+
+Fraud Detection and Prevention
+Complementary ... but ... not independent
+
+Prevention mechanism
+
+Detection system
+
+Fraudsters adapt and
+change their behavior
+
+Impact detection power
+
+Impact prevention power
+57
+
+Fraud Detection and Prevention
+Complementary ... but ... not independent
+
+Prevention mechanism
+
+Detection system
+
+Fraudsters adapt and
+change their behavior
+
+Impact detection power
+
+Impact prevention power
+58
+
+Fraud Detection and Prevention
+Complementary ... but ... not independent
+
+Prevention mechanism
+
+Detection system
+
+Fraudsters adapt and
+change their behavior
+
+Impact detection power
+
+Impact prevention power
+59
+
+Fraud Detection Approach
+Threefold Approach: Different Granularities
+Local
+Profile
+(for each user)
+
+Global
+Profile
+
+Temporal
+Profile
+(for each user)
+60
+
+Fraud Detection Approach
+Local Profile characterizes each user’s individual spending pattern to evaluate
+the anomaly of each new transaction
+Local
+Profile
+(for each user)
+
+Global
+Profile
+
+Temporal
+Profile
+(for each user)
+61
+
+Fraud Detection Approach
+Global Profile characterizes “classes” of spending patterns and mitigate the
+undertraining problem
+Local
+Profile
+(for each user)
+
+Global
+Profile
+
+Temporal
+Profile
+(for each user)
+62
+
+Fraud Detection Approach
+Temporal Profile deals with frauds that exploit the repetition of legitimate-looking
+transactions over time
+Local
+Profile
+(for each user)
+
+Global
+Profile
+
+Temporal
+Profile
+(for each user)
+63
+
+Fraud Detection Examples
+
+64
+
+Fraud Prevention: What is Strong
+Customer Authentication?
+● A new European regulatory requirement
+○
+○
+
+reduce fraud
+make online payments more secure.
+
+● To accept payments and meet SCA requirements:
+○
+
+build additional authentication into your checkout flow.
+
+● SCA requires authentication to use at least two of the
+following three elements:
+
+Fraud Prevention: Example Classic
+Technologies
+One-time password generators:
+● Private key + counter synchronized with the host.
+● Client: password = Encrypt(counter, private key).
+● Host: counter = Decrypt(password, public key).
+● Check that the counter is the expected one.
+● The counter changes every 30–60 seconds.
+Application examples: online banking, admin console
+(e.g., Amazon AWS).
+Smart cards (or USB keys)
+● CPU + non-volatile RAM with a private key.
+● The smart card authenticates itself to host via a
+challenge-response protocol.
+● Uses the private key to encrypt the challenge.
+● The private key does not leave the device.
+● Should be tamper proof to some extent.
+Application examples: credit cards (+PIN).
+
+66
+
+Static OTP lists (cheaper alternative)
+
+●
+●
+●
+●
+
+Known to both client and host.
+Host chooses a challenge: random numbers (e.g., "second digit of the 14th cell").
+The client transmits the response (hopefully, over an encrypted channel).
+The host should not keep the list in clear (e.g., hashing).
+
+67
+
+Modern Technology: TOTP
+
+Software that implement the same functionality of password generators
+
+68
+
+Modern Technology: TOTP
+
+Software that implement the same functionality of password generators:
+●
+
+●
+
+Key difference
+○ password generators are closed, embedded systems.
+○ password-generation apps work on general-purpose sw/hw platforms.
+What if the device is infected by a malicious app: Dmitrienko et al., When More
+Becomes Less: On the (In)Security of Mobile Two-Factor Authentication, FC 2014
+
+69
+
+https://www.europol.europa.eu/activities-services/public-awareness-and-prevention-guides/sim-swapping-%
+E2%80%93-mobile-phone-scam
+
+How to authenticate a payment
+● 3D Secure
+● 3D Secure 2
+● Apple Pay or Google Pay
+
+71
+
+3D Secure
+
+72
+
+Expert-based Knowledge
+
+Expert-based approach
+Based on the Domain knowledge of the fraud analyst
+● Gathering and processing the right information in the
+right manner.
+Detailed and manual investigation of suspicious cases,
+which may indicate a new fraud mechanism
+● understand and address the new mechanism.
+Comprehension of the fraud mechanism allows
+extending the fraud detection and prevention mechanism.
+74
+
+Fraud Investigation and
+Management
+When fraudulent activities have been detected and
+confirmed two types of measures are typically taken:
+1. Corrective measures
+2. Preventive measures
+
+75
+
+Corrective measures
+Aim to resolve the fraud and correct the consequences.
+
+Retrospective screening: Actions to retrospectively
+detect and subsequently address similar fraud cases
+
+The sooner corrective measures are taken and fraud is
+detected, the more effective such measures are and the
+more losses can be avoided.
+76
+
+Preventive measures
+Actions that aim at preventing future frauds, making the
+organization more robust and less vulnerable.
+
+Typical process
+1. Investigate the fraud case to understand the underlying
+mechanisms.
+2. Extend the available expert knowledge with the
+discovered mechanisms.
+3. Adjust the detection and prevention system.
+77
+
+Expert-based approach:
+Rule-based engine
+If-Then rules
+● Describe previously detected fraud patterns
+● Applied to future transactions
+○ trigger an alert when a fraud may be committed.
+
+78
+
+Red Flags of Frauds
+“Red flags is the anomaly, deviation from normality that is, a
+variation from predictable patterns of behavior or, simply,
+something that seems out of place. “
+Grabosky and Duffield
+
+Red-flags are translated in expert rules and included in a
+rule engine
+79
+
+Rule-based Engine Disadvantages
+
+80
+
+Rule-based Engine Disadvantages
+● Expensive to “build”
+○ Require manual input by the fraud experts.
+
+81
+
+Rule-based Engine Disadvantages
+● Expensive to “build”
+○ Require manual input by the fraud experts.
+
+● Difficult to maintain and manage:
+■ Update: keep the rule base lean and effective.
+■ Every signaled case requires human follow-up and
+investigation.
+
+82
+
+Rule-based Engine Disadvantages
+● Expensive to “build”
+○ Require manual input by the fraud experts.
+
+● Difficult to maintain and manage:
+■ Update: keep the rule base lean and effective.
+■ Every signaled case requires human follow-up and
+investigation.
+
+● New fraud patterns are not automatically signaled
+○ Fraud is a dynamic phenomenon
+○ Fraudsters can learn the rules and circumvent them
+
+83
+
+Rule-based Engine Disadvantages
+● Expensive to “build”
+○ Require manual input by the fraud experts.
+
+● Difficult to maintain and manage:
+■ Update: keep the rule base lean and effective.
+■ Every signaled case requires human follow-up and
+investigation.
+
+● New fraud patterns are not automatically signaled
+○ Fraud is a dynamic phenomenon
+○ Fraudsters can learn the rules and circumvent them
+Rule based engine must continuously monitored, improved,
+and updated to remain effective.
+84
+
+Fraud becomes easier to detect the
+more time has passed
+
+85
+
+Fraud becomes easier to detect the
+more time has passed - 1
+A fraud mechanism is
+first successfully used
+
+Increase
+● In the usage
+● In the number of this
+particular type of
+fraud.
+
+● Fraudsters appear to be
+repeated offenders
+● Knowledge shared
+between fraudsters
+86
+
+Fraud becomes easier to detect the
+more time has passed - 2
+The fraud pattern becomes more evident
+Statistically easier to detect
+The fraud mechanism is discovered and detected
+Similar frauds, committed in the past, are discovered.
+
+87
+
+Fraud becomes easier to detect the
+more time has passed - 3
+The more frauds are discovered
+The more data is collected and is available
+Better detection techniques are being developed
+Big data can be explored and exploited for fraud
+detection at a lower cost = Data-driven Fraud Detection
+
+88
+
+Expert-based Vs
+Automated Fraud-Detection Systems
+Expert-based fraud-detection system relies on human
+expert input, evaluation, and monitoring
+● Starting point and complementary tool to develop an
+effective fraud-detection and prevention system
+
+89
+
+Expert-based Vs
+Automated Fraud-Detection Systems
+Expert-based fraud-detection system relies on human
+expert input, evaluation, and monitoring
+● Starting point and complementary tool to develop an
+effective fraud-detection and prevention system
+
+A shift is taking place toward automated data-driven
+fraud-detection systems
+● Requires less human involvement
+● Could lead to a more efficient and effective system
+● Expert knowledge remains crucial to build effective
+systems
+
+90
+
+Data-Driven Fraud Detection
+
+1. Precision
+2. Operational efficiency
+3. Cost efficiency
+4. Growing amount of interest
+
+91
+
+Precision
+Organizations have a limited investigation capacity
+Increased detection power w.r.t to classic approaches.
+● Process massive volumes of information to uncover
+frauds that are not apparent to the human eye.
+Goals of a fraud-detection system
+● Make optimal use of the limited investigation capacity
+● Maximize the fraction of fraudulent cases among the
+inspected ones (more frauds detected).
+Higher Precision -> Higher fraction of inspected frauds
+
+92
+
+Operational and Cost Efficiency
+● Increasing amount of cases to be analyzed, requires
+automated processes.
+● Operational requirements exist, imposing time
+constraints on the processing of a case.
+Example: Credit Card vs Bank Transfer
+Expert-based fraud-detection system is challenging and
+labor intensive
+Automated data-driven approaches are compliant with
+stringent operational requirements
+
+93
+
+Growing amount of interest
+The negative social and financial impact of frauds
+Increase awareness and attention for fraud
+Growing investments and research from academia,
+industry, and government
+
+94
+
+Fraud-Detection
+Techniques
+
+Frauds are hard to detect
+Fraud-detection approaches have evolved and gained
+significant power over the past years
+● Adopting powerful statistically-based methodologies
+● Analyzing massive amounts of data.
+
+Fraud remains hard and complex to detect
+
+96
+
+Fraud Detection is Challenging
+(Where's Wally?)
+
+97
+
+Fraud Detection is Challenging
+(Where's Wally?)
+
+98
+
+Fraud Detection is Challenging
+(Where's Wally?)
+
+99
+
+Fraud Detection is Challenging
+
+100
+
+Fraud Detection is Challenging
+
+101
+
+Fraud-Detection Techniques
+Fraudsters develop advanced strategies to cover/blend in
+their tracks to avoid being detected (camouflage / mimicry /
+adversarial ML)
+Need for new techniques that are able to detect and
+address stealthy patterns
+
+1. Unsupervised learning or descriptive analytics
+techniques
+2. Supervised learning or predictive analytics techniques
+102
+
+Unsupervised learning techniques
+or descriptive analytics
+Unsupervised
+● They do not require labeled observations
+● Learn the norm from historical observation
+Detecting anomalies = Find behavior that deviates from
+normal one
+Allow detecting novel fraud pattern
+● Different in nature from historical fraud
+● Make use of new, unknown mechanisms
+
+Complementary tool to improve its expert rule-based
+fraud-detection system.
+
+103
+
+Example: Telecommunications fraud
+
+104
+
+Fraud-Detection Techniques
+
+105
+
+Unsupervised learning techniques
+limitations
+
+106
+
+Unsupervised learning techniques
+limitations
+
+Prone to deception: camouflage-like fraud strategies.
+Detect a new fraud if it leads to detectable deviations from
+normality
+Need to be improved by complementing other tools.
+
+107
+
+Supervised learning techniques or
+predictive analytics
+Learn from historical observations to retrieve patterns that
+allow differentiating normal and fraudulent behavior.
+Aim at finding tracks that fraudsters cannot hide: “known
+alarms”
+Can be applied to
+● Predict fraud
+● Detect fraud
+● Estimate the amount of fraud.
+108
+
+Supervised learning techniques
+limitations
+
+109
+
+Supervised learning techniques
+limitations
+
+They need historical examples to learn from (i.e., a
+labeled data set of historically observed fraud behavior).
+Low detection power against different and new fraud
+types (i.e., not detected so far and not included in the
+historical database of fraud) -> detected by descriptive
+analytics
+
+110
+
+Complementarity of supervised and
+unsupervised methods
+Use of both methods in developing a powerful
+fraud-detection and prevention system.
+
+○ They focus on different aspects of fraud.
+5
+Transactions
+
+1 Preprocessing and
+Feature Extraction
+TIME AGGREGATION
+TIME
+
+BEHAVIOUR
+PROFILE
+BEHAVIOUR
+
+AGGREGATION
+
+PROFILE
+
+Financial
+Institution
+
+Supervised Learning
+
+Feedback
+Collection
+Fraud Analyst
+
+6 Hyper Parameter
+
+4Selection Strategies
+
+Tuning and
+Feature Selection
+Labelled
+Transactions and
+Vectors
+
+7 Classification
+
+Knowledge
+Diversity
+Entropy
+
+23
+
+Unsupervised Learning
+High
+Level
+Vectors
+
+Ensemble
+Tempor
+Tempor
+Local
+Global
+Local
+Global
+Temporal
+Local
+Global
+al
+al
+Profile
+Profile
+Profile
+Profile
+Profile
+Profile
+Profile
+Profile
+Profile
+Isolatio
+Auto
+n
+encode
+Forest
+r
+
+Anomaly Scoring
+
+2
+
+111
+
+Example: Credit Card Detection
+With a label that indicates whether a transaction was
+fraudulent -> supervised analytics that classify an
+instance as being fraudulent or not.
+Such models may be interpreted to understand the
+underlying credit card fraud behavior patterns:
+● Small purchase followed by a big one.
+● Large number of online purchases in a short period.
+● Spending as much as possible as quickly as possible.
+● Spending smaller amounts, spread across time.
+112
+
+Graph/Network analysis
+Extends the abilities of the fraud-detection system by
+learning and detecting characteristics of fraudulent
+behavior in a network of linked entities.
+Including an extra source of information in the analysis,
+being the relationships between entities, it contributes in
+uncovering particular patterns indicating fraud.
+
+113
+
+Developing a fraud-detection system
+1. Expert-based rule engine
+2. Unsupervised learning systems
+3. Supervised learning systems
+The exact order of adopting the different
+techniques depend on the characteristics of
+the type of fraud.
+114
+
+Challenges of developing
+fraud-detection models
+
+● Dynamic nature of fraud
+● Good detection power
+● Skewness of the data
+● Operational Efficiency
+○ Big Data management
+
+115
+
+Frauds are a dynamic phenomenon
+Fraudsters
+● Adapt their approaches to commit fraud without being
+exposed
+○ Probe fraud-detection and prevention systems
+■ to understand their functioning
+■ to discover their weaknesses
+
+● Develop advanced strategies to cover/blend in their
+tracks to avoid being detected ~ camouflage
+Need for adaptive analytical models for detection and
+prevention to detect and resolve fraud as soon as possible.
+116
+
+Good detection power
+Detect fraud as accurately as possible
+● Low false negative rate (i.e., missed frauds),
+especially involving large amounts (high financial
+impact)
+● Low false alarm rate, to avoid harassing good
+customers and prevent accounts or transactions to be
+blocked unnecessarily
+117
+
+Skewness of the data
+Skewness = Plenty of historical examples of
+non-fraudulent cases, but only a limited number of
+fraudulent cases
+Needle-in-a-haystack problem
+might cause an analytical technique to experience
+difficulties in learning an accurate model.
+
+118
+
+Operational Efficiency
+Limited amount of time available to reach a decision
+and let a transaction pass or not
+● clearly impacts the design of
+○ the operational IT systems
+○ the analytical model.
+
+Must be able to deal with the massive volumes of data
+● The analytical model should not take too long to be
+evaluated.
+● The information or the variables used by the model should
+not take too long to be gathered or calculated.
+119
+
+Fraud Management Cycle
+
+Fraud Management Cycle
+
+Automated Detection Algorithm
+
+Fraud
+Detection
+
+Fraud
+Investigation
+
+Fraud
+confirmation
+
+Fraud
+prevention
+
+121
+
+Fraud Management Cycle
+Applying detection models on new, unseen observations and
+assigning a fraud risk to every observation
+
+Automated Detection Algorithm
+
+Fraud
+Detection
+
+Fraud
+Investigation
+
+Fraud
+confirmation
+
+Fraud
+prevention
+
+122
+
+Fraud Management Cycle
+A human expert is often required to investigate suspicious,
+flagged cases given the involved subtlety and complexity.
+
+Automated Detection Algorithm
+
+Fraud
+Detection
+
+Fraud
+Investigation
+
+Fraud
+confirmation
+
+Fraud
+prevention
+
+123
+
+Fraud Management Cycle
+Determining true fraud label, possibly involving field
+research.
+
+Automated Detection Algorithm
+
+Fraud
+Detection
+
+Fraud
+Investigation
+
+Fraud
+confirmation
+
+Fraud
+prevention
+
+124
+
+Fraud Management Cycle
+Preventing fraud to be committed in the future.
+
+Automated Detection Algorithm
+
+Fraud
+Detection
+
+Fraud
+Investigation
+
+Fraud
+confirmation
+
+Fraud
+prevention
+
+125
+
+Fraud Management Cycle
+Feedback Loop: Newly detected cases should be added to
+the database of historical fraud cases, which is used to learn
+or induce the detection model.
+
+Automated Detection Algorithm
+
+Fraud
+Detection
+
+Fraud
+Investigation
+
+Fraud
+confirmation
+
+Fraud
+prevention
+
+126
+
+Regular update of the model
+A regular update of the model is recommendable given the
+dynamic nature of fraud
+What is the required frequency of retraining or updating?
+
+127
+
+Regular update of the model
+A regular update of the model is recommendable given the
+dynamic nature of fraud
+The frequency of retraining or updating the detection
+model depends on several factors:
+○ The volatility of the fraud behavior.
+○ The detection power of the current model.
+○ The amount of (similar) confirmed cases already
+available in the database.
+○ The rate at which new cases are being confirmed.
+○ The required effort to retrain the model.
+
+Reinforcement learning = continuously updates the
+detection model by learning from the newest observations
+
+128
+
+Fraud Analytical Process
+
+The Fraud Analytics Process Model
+● Iterative Process
+
+130
+
+The Fraud Analytics Process Model
+
+131
+
+The Fraud Analytics Process Model
+Data are the key ingredient to any analytical exercises
+
+132
+
+The Fraud Analytics Process Model
+Data selection has an impact on the analytical models
+● Data gathered in a staging area
+● Basic exploratory analysis
+
+133
+
+The Fraud Analytics Process Model
+Get rid of all inconsistencies, such as missing values and
+duplicate data.
+
+134
+
+The Fraud Analytics Process Model
+Additional transformations: binning, alphanumeric to numeric
+coding, geographical aggregation, and so on.
+
+135
+
+The Fraud Analytics Process Model
+The analytical model is estimated on the preprocessed and
+transformed data.
+The actual fraud-detection model is built.
+
+136
+
+The Fraud Analytics Process Model
+The model is interpreted and evaluated by the fraud experts.
+
+137
+
+Discussion: Possible Analysis
+Output
+● Trivial fraudulent patterns = Validation of
+the model
+● Unknown patterns = “knowledge
+diamonds” = provide added insight and
+detection power
+Once the analytical model has been appropriately validated
+and approved, it can be put into production.
+
+138
+
+Additional Consideration
+How to represent the model output in a user-friendly way?
+How to integrate it with other applications?
+How to make sure the analytical model is appropriately
+monitored and back tested on an ongoing basis?
+
+139
+
+Key characteristics of successful
+fraud analytics models
+A fraud-detection model must be thoroughly evaluated
+before being adopted.
+
+Key characteristics of successful fraud analytics models
+● Statistical accuracy
+● Interpretability
+● Operational efficiency
+● Economical cost
+● Regulatory compliance
+140
+
+Statistical accuracy (+ significance)
+Detection power and correctness of the statistical model
+in flagging suspicious cases.
+● Different Metrics
+We need to make sure that the model generalizes well and
+is not overfitted to the historical data set
+
+141
+
+Interpretability
+When a deeper understanding of the detected frauds is
+required, a fraud-detection model must be
+interpretable.
+Model’s interpretability depends on the technique used
+Open-box models: Allow to understand the underlying
+reasons why the model signals a case to be suspicious.
+Closed-box models: complex, non interpretable models.
+142
+
+Operational efficiency
+Time and effort that is required to
+● collect and preprocess the data;
+● to evaluate the model;
+● monitor and backtest the model, and re-estimate it;
+● to evaluate whether a case is suspicious or not.
+When cases need to be evaluated in real time - >
+operational efficiency is crucial and is a main concern
+during model performance assessment.
+
+143
+
+Fraud Detection Costs
+Developing and implementing a fraud-detection model
+involves a significant cost to an organization
+● To gather, preprocess, and analyze the data.
+● To put the resulting analytical models into production.
+● The software, human, and computing resources.
+● External data to enrich the available in-house data.
+Cost-benefit analysis to gain insight of the returns on
+investment of building an advanced fraud-detection system.
+
+144
+
+Security vs. Cost Balance
+Direct costs
+
+● Management
+● Operational
+● Equipment
+Indirect costs (more relevant)
+
+● Less usability
+● Slower performance
+● Less privacy (due to security controls)
+● Reduced productivity (users are slower)
+145
+
+Fraud Management as "Risk
+Management"
+Risk: statistical and economical evaluation of the exposure
+to damage because of the presence of vulnerabilities and
+threats.
+Risk = Asset x Vulnerabilities x Threats
+controllable variables
+
+independent
+variable
+
+Security: balance the
+
+(reduction of vulnerabilities + damage containment)
+vs.
+(cost)
+146
+
+More money =/=> More security
+Examples
+
+● Very expensive,
+“unconfigured”
+Fraud Detection
+System
+○ Better not to have it
+
+● Complex
+authentication that
+slows down users
+○ Users will write
+passwords on
+stickies
+
+147
+
+Regulatory compliance
+Depending on the context there may be internal or
+organization-specific and external regulation that applies to
+the development and application of a model.
+A fraud-detection model should be in line and comply with
+all applicable regulation and legislation.
+(e.g., PSD2)
+
+148
+
+The End
+
+Credits
+Bart Baesens, Véronique Van Vlasselaer, Wouter Verbeke - Fraud Analytics Using Descriptive, Predictive,
+and Social Network Techniques: A Guide to Data Science for Fraud Detection - Wiley - Chapter 1
+
+
