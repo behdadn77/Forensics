@@ -1,6 +1,4 @@
-Here's the updated **README.md** with the corrections:
 
----
 
 # Digital Forensics and Cybercrime  
 **Politecnico di Milano**  
@@ -67,7 +65,3 @@ This repository is maintained using:
 ## 📬 Contact  
 
 Feel free to open an issue or reach out if you have any questions or suggestions!  
-
----
-
-Let me know if this matches your expectations!
