@@ -17,7 +17,7 @@ Each chapter includes:
 
 ### 📑 Course Content  
 
-1. [00. Administrivia](Slide-20241121/00.%20Administrivia.pdf) - [Summary](Summary/00.%20Administrivia.md)  
+1. [00. Administrivia](Slide-20241121/00.%20Administrivia.pdf) 
 2. [01. Cybercrime: Threat Landscape](Slide-20241121/01.%20Cybercrime_%20threat%20landscape.pdf) - [Summary](Summary/01.%20Cybercrime_%20threat%20landscape.md)  
 3. [02. Abuses of Cryptocurrency and Forensics](Slide-20241121/02.%20Abuses%20of%20cryptocurrency%20and%20forensics.pdf) - [Summary](Summary/02.%20Abuses%20of%20cryptocurrency%20and%20forensics.md)  
 4. [03. Fraud Analysis and Detection (2024)](Slide-20241121/03.%20Fraud%20Analysis%20and%20Detection%20%5B2024%5D.pdf) - [Summary](Summary/03.%20Fraud%20Analysis%20and%20Detection%20%5B2024%5D.md)  
@@ -29,7 +29,7 @@ Each chapter includes:
 10. [09. Evaluation and Presentation](Slide-20241121/09.%20Evaluation%20and%20presentation.pdf) - [Summary](Summary/09.%20Evaluation%20and%20presentation.md)  
 11. [10. Cloud Forensics](Slide-20241121/10.%20Cloud%20Forensics.pdf) - [Summary](Summary/10.%20Cloud%20Forensics.md)  
 12. [11. Incident Response](Slide-20241121/11.%20Incident%20Response.pdf) - [Summary](Summary/11.%20Incident%20Response.md)  
-13. [12. Informatica Forense nel Contesto Italiano](Slide-20241121/12.%20Informatica%20forense%20nel%20contesto%20italiano%20%281%29.pdf) - [Summary](Summary/12.%20Informatica%20forense%20nel%20contesto%20italiano%20%281%29.md)  
+13. [12. Informatica Forense nel Contesto Italiano](Slide-20241121/12.%20Informatica%20forense%20nel%20contesto%20italiano%20%281%29.pdf)
 
 ---
 
